@@ -5,7 +5,6 @@ export const FETCH_COMMENTS_BEGIN   = 'FETCH_COMMENTS_BEGIN';
 export const FETCH_COMMENTS_SUCCESS = 'FETCH_COMMENTS_SUCCESS';
 export const FETCH_COMMENTS_FAILURE = 'FETCH_COMMENTS_FAILURE';
 export const ADD_POST = 'ADD_POST';
-export const ADD_DATE_POST = 'ADD_DATE_POST';
 export const DELETE_POST = 'DELETE_POST';
 export const EDIT_POST = 'EDIT_POST';
 export const SORT_POSTS = 'SORT_POSTS';
@@ -57,12 +56,6 @@ export const fetchPostsFailure = (error) => ({
 
 export const addPost = (theme, text, id, userId) => ({
   type: ADD_POST,
-  payload: {title: theme, body: text, id: id, userId}
-
-});
-
-export const addDateToPost = (theme, text, id, userId) => ({
-  type: ADD_DATE_POST,
   payload: {title: theme, body: text, id: id, userId}
 
 });

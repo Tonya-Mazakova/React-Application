@@ -7,7 +7,7 @@ import PostsList from './PostsList';
 import AddPost from '../Components/AddPost';
 import Sorting from '../Components/Sorting';
 import Filtration from '../Components/Filtration';
-import { fetchPosts, fetchComments, addDateToPost, sortPosts } from "../Actions/actions";
+import { fetchPosts, fetchComments, sortPosts } from "../Actions/actions";
 
 
 const Wrapper = styled.div`
@@ -150,7 +150,6 @@ const mapStateToProps = state => {
   const mapDispatchToProps =  {
     fetchPosts,
     fetchComments,
-    addDateToPost,
     sortPosts,
   };
   
