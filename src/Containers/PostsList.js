@@ -27,7 +27,7 @@ const LiPost = styled.li`
   flex-direction:column;
   justify-content:space-between;
   width:620px;
-  height:220px;
+  height:230px;
   background-color:azure;
   margin: 0 auto 10px;
 `;
@@ -39,7 +39,7 @@ const TPost = styled.p`
 `;
 
 const BPost = styled.p`
-  margin-top: 12px;
+  margin-top: 10px;
   line-height: 1.4;
 `;
 
@@ -92,6 +92,15 @@ const Loading = styled.p`
   text-align: center;
   margin-top: 30px;
 `;
+
+const DateWrap = styled.div`
+  margin-top: 10px;
+`;
+
+const DatePost = styled.span`
+  margin-left: 5px;
+`;
+
 
 
 
@@ -222,6 +231,19 @@ class PostsList extends PureComponent {
     }
     
   const renderPosts = this.state.pageOfItems.map((post)=>{
+    let date = null;
+    function formatDate(date) {
+      let d = new Date(date),
+          month = '' + (d.getMonth() + 1),
+          day = '' + d.getDate(),
+          year = d.getFullYear();
+  
+      if (month.length < 2) month = '0' + month;
+      if (day.length < 2) day = '0' + day;
+  
+      return [year, month, day].join('-');
+    }
+    date = formatDate(post.date);
     return (
       <Route key={post.id} path={"/Post/"} render={(props)=> {
 
@@ -229,8 +251,8 @@ class PostsList extends PureComponent {
         <LiPost key={post.id}>   
             <PostTop>
                 <WrapTitle><TPost id={"Title" + post.id}>{post.title}</TPost><p>#{post.id}</p></WrapTitle>
+                <DateWrap><Icon name='calendar'/><DatePost>{date}</DatePost></DateWrap>                
                 <BPost id={"Body" + post.id}>{post.body}</BPost>
-               
             </PostTop>
             <PostBottom>
                 <IconStyle onClick={()=>{this.togglePopup(post.id, 'edit post')}} className='anim'>
@@ -266,7 +288,7 @@ if(this.props.posts && this.props.posts.length){
     <UlPost>
       {renderPosts}
     </UlPost>
-    <Pagination items={this.props.posts} userId={this.props.userId} onChangePage={this.onChangePage}/>
+    <Pagination items={this.props.posts} userId={this.props.userId} dateVal={this.props.dateVal} onChangePage={this.onChangePage}/>
     <Popup  closePopup={this.closePopup}
             propsPopup={this.state.propsPopup}
           />

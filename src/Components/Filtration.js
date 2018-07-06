@@ -1,12 +1,6 @@
 import React, { PureComponent } from 'react';
-import { connect } from "react-redux";
-import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import '../css/index.sass';
-
-
-
-
 
 
 const Wrapper = styled.div`
@@ -18,10 +12,6 @@ const Title = styled.h4`
  
 `;
 
-const TitleFilter = styled.h5`
- 
-`;
-
 const SelectWrap = styled.div`
     display: flex;
     flex-direction: row;
@@ -29,22 +19,22 @@ const SelectWrap = styled.div`
     margin-top:10px;
 `;
 
-const Div = styled.div`
-    margin-left: 10px;
+const FilterWrap = styled.div`
+    display: flex;
+    flex-direction: row;
 `;
 
-const Option = styled.option`
-    margin-left:8px;
-`;
+
+
 
 class Filtration extends PureComponent {
     constructor(props){
         super(props);
         this.state={
            htmlObject: null,
-           numOptions: null
+           numOptions: null,
+           renderFilter: false
         };
-    this.createSelectItems = this.createSelectItems.bind(this);
     this.renderSelect = this.renderSelect.bind(this);
     }
 
@@ -53,35 +43,34 @@ componentDidMount(){
     this.setState({
         htmlObject: htmlObject
     });
-    this.renderSelect(htmlObject, this.props.propsFiltration);
 }
 
 componentDidUpdate(prevProps, prevState) {
-    if (this.props.propsFiltration !== prevProps.propsFiltration) {
-       this.renderSelect(this.state.htmlObject, this.props.propsFiltration);
+    if (this.props.filtration !== prevProps.filtration) {
+        if(!this.state.renderFilter){
+            this.renderSelect(this.state.htmlObject, this.props.filtration);    
+        }
     }
 }
 
-createSelectItems(param) {
-    let items = [];         
-    for (let i = 0; i < param.numOptions.optionsForSelect_1; i++) {             
-         items.push(<Option key={i} value={i}>{param.items[i]}</Option>);   
-    }
-    return items;
-}  
 
 renderSelect(htmlObject, param){
-    
-    let selectHTML = ''; 
-    selectHTML = "<select id='filterSelect' class='filterSelect'>";    
-    for(let i = 0; i < param.numOptions.optionsForSelect_1; i++){
-        selectHTML += "<option value='" + param.items.itemsForSelect_1[i] + "'>" + param.items.itemsForSelect_1[i] + "</option>";
+    let selectHTML = '', elDiv = null;
+    this.setState({
+        renderFilter: true
+    })
+    for(let i = 0; i < param.numSelect; i++){
+        selectHTML = `<div id="filter${i}"><TitleFilter class="titleSelect">${this.props.filtration.title[i]}</TitleFilter><select id='filterSelect${i}' class='filterSelect'>`;    
+        for(let j = 0; j < param.numOptions[i]; j++){
+            selectHTML += "<option value='" + param.items[i][j] + "'>" + param.items[i][j] + "</option>";
+        }   
+        selectHTML += "</select></div>";
+        elDiv = document.createElement('div');
+        elDiv.innerHTML = selectHTML;
+        htmlObject.appendChild(elDiv);
     }
-    selectHTML += "</select>";
-    htmlObject.innerHTML = selectHTML;
 
     this.props.onChangeFilter();
-
 }
 
 
@@ -91,8 +80,7 @@ render(){
         <Wrapper>
             <Title>Filter by:</Title>
             <SelectWrap>
-                <TitleFilter>{this.props.propsFiltration.title.title_1}</TitleFilter>
-                <Div id='filter'></Div>
+                <FilterWrap id='filter' className="filter"></FilterWrap>
             </SelectWrap>
         </Wrapper>
         )
@@ -101,14 +89,6 @@ render(){
 }
 
 
-const mapStateToProps = state => { 
-    return {
-      posts: state.postsReducer.items,
-      loadingPosts: state.postsReducer.loading,
-      errorPosts: state.postsReducer.error
-    };
-  };
 
 
-
-export default withRouter(connect(mapStateToProps)(Filtration));
+export default Filtration;

@@ -7,7 +7,7 @@ import PostsList from './PostsList';
 import AddPost from '../Components/AddPost';
 import Sorting from '../Components/Sorting';
 import Filtration from '../Components/Filtration';
-import { fetchPosts, fetchComments, sortPosts } from "../Actions/actions";
+import { fetchPosts, fetchComments, addDateToPost, sortPosts } from "../Actions/actions";
 
 
 const Wrapper = styled.div`
@@ -36,27 +36,22 @@ const HeaderBottomWrap = styled.div`
 class App extends PureComponent{
   constructor(props){
       super(props);
-      this.state={
+      this.state={  
             userId: null,
+            dateVal: null,
         sorting:{
             title: 'Sort by:',
-            numOptions:2,
-            items:['id <','id >']
+            numOptions: 2,
+            items: ['id <','id >']
         },
-        propsFiltration:{
-            title: {
-              title_1: 'userId'  
+        filtration:{
+            title: ['userId', 'date'],
+            numSelect: 2,
+            numOptions: [null, null],
+            items: [null, null]
             },
-            numSelect: 1,
-            numOptions: {
-                optionsForSelect_1: null
-            },
-            items:{
-                itemsForSelect_1: []
-                }
-            },
-        countUserId: 10         
-    }
+        countUserId: 10
+}
     this.onChangeSort = this.onChangeSort.bind(this);
     this.onChangeFilter = this.onChangeFilter.bind(this);
   }
@@ -75,20 +70,15 @@ class App extends PureComponent{
         for(let i=1; i <= length; i++){
             arr.push(i);
         }
-        this.setState({
-            propsFiltration:{
-                title: {
-                  title_1: 'userId'  
-                },
-                numSelect: 1,
-                numOptions: {
-                    optionsForSelect_1: length
-                },
-                items:{
-                    itemsForSelect_1: arr
-                    }
-                }     
-        });
+        this.setState(prevState => ({
+            ...prevState,
+            filtration:{
+                ...prevState.filtration,
+                numOptions:[length, 8],
+                items:[arr,['none', '2012', '2013', '2014', 
+                            '2015', '2016', '2017', '2018']]
+            }
+        }))
     }
 }
 
@@ -97,20 +87,37 @@ class App extends PureComponent{
   }
 
   onChangeFilter(){
-    document.getElementById('filterSelect').addEventListener('click', (e)=>{
-        if(e.target.value !== 'none'){
-            this.props.history.push({ pathname: "/Post/" + e.target.value});
-            this.setState({
-                userId:Number(e.target.value)
-            })
-        }else{
-            this.setState({
-                userId:''
-            })
+   for(let i=0 ; i< this.state.filtration.title.length; i++){
+      if(this.state.filtration.title[i] === 'userId'){
+        document.getElementById(`filterSelect${i}`).addEventListener('click', (e)=>{
+            if(e.target.value !== 'none'){
+                this.props.history.push({ pathname: "/Post/" + e.target.value});
+                this.setState({
+                    userId:Number(e.target.value)
+                })
+            }else{
+                this.setState({
+                    userId:''
+                })
             this.props.history.push({ pathname: "/Post/"});
-        }
+            }
     }, false);
+      }
+      else if(this.state.filtration.title[i] === 'date'){
+        document.getElementById(`filterSelect${i}`).addEventListener('click', (e)=>{
+            if(e.target.value !== 'none'){
+                this.setState({
+                    dateVal: e.target.value
+                })               
+            }else{
+                this.setState({
+                    dateVal: ''
+                }) 
+            }    
+        }, false); 
+    } 
   }
+}
 
   render(){
       return(
@@ -121,10 +128,10 @@ class App extends PureComponent{
                 </Header>   
             </HeaderWrap>  
             <HeaderBottomWrap>   
-                <Filtration items={this.props.posts}  propsFiltration={this.state.propsFiltration} onChangeFilter={this.onChangeFilter}/>
+                <Filtration items={this.props.posts}  filtration={this.state.filtration} onChangeFilter={this.onChangeFilter}/>
                 <Sorting sorting={this.state.sorting} onChangeSort={this.onChangeSort}/>
             </HeaderBottomWrap>
-            <PostsList userId={this.state.userId}/>  
+            <PostsList userId={this.state.userId} dateVal={this.state.dateVal} />  
           </Wrapper>  
       )
   }
@@ -143,6 +150,7 @@ const mapStateToProps = state => {
   const mapDispatchToProps =  {
     fetchPosts,
     fetchComments,
+    addDateToPost,
     sortPosts,
   };
   

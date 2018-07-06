@@ -1,8 +1,6 @@
 import React, { PureComponent } from 'react';
 
  
-
- 
 class Pagination extends PureComponent {
     constructor(props) {
         super(props);
@@ -22,16 +20,36 @@ class Pagination extends PureComponent {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (this.props.items !== prevProps.items || this.props.userId !== prevProps.userId) {
+        if (this.props.items !== prevProps.items || this.props.userId !== prevProps.userId 
+            || this.props.dateVal !== prevProps.dateVal) {
             this.setPage(this.state.initialPage);
         }
     }
 
     setPage(page) {    
-        let items = null;
-        if(this.props.userId){
+        let items = null, date = null;
+        function formatDate(date) {
+            let d = new Date(date),
+                month = '' + (d.getMonth() + 1),
+                day = '' + d.getDate(),
+                year = d.getFullYear();
+            if (month.length < 2) month = '0' + month;
+            if (day.length < 2) day = '0' + day;
+            return [year, month, day].join('-');
+        }
+        if(this.props.userId && !this.props.dateVal){
             items = this.props.items.filter((post)=>{
                 return post.userId === Number(this.props.userId);
+            })
+        }else if(this.props.dateVal && !this.props.userId){
+            items = this.props.items.filter((post)=>{
+                date = formatDate(post.date).substring(0,4);
+                return date === this.props.dateVal;
+            })
+        }else if(this.props.userId && this.props.dateVal){
+            items = this.props.items.filter((post)=>{
+                date = formatDate(post.date).substring(0,4);
+                return date === this.props.dateVal && post.userId === Number(this.props.userId);
             })
         }else{
             items = this.props.items;  
