@@ -13,7 +13,7 @@ class AddComment extends PureComponent{
     constructor(props){
         super(props);
         this.state={
-            propsPopup:{
+            popup:{
                 title: "Add comment",
                 showPopup: false,
                 todo: 'add comment',
@@ -34,8 +34,8 @@ class AddComment extends PureComponent{
     togglePopup() {
           this.setState(prevState => ({
             ...prevState,
-            propsPopup:{
-                ...prevState.propsPopup,
+            popup:{
+                ...prevState.popup,
                 showPopup: !this.state.showPopup 
             }
         }))
@@ -54,8 +54,8 @@ class AddComment extends PureComponent{
         }
         this.setState(prevState => ({
             ...prevState,
-            propsPopup:{
-                ...prevState.propsPopup,
+            popup:{
+                ...prevState.popup,
                 showPopup: false 
             }
         }))
@@ -66,7 +66,7 @@ class AddComment extends PureComponent{
             <div>
                 <AddElement propsAddElement={this.state.propsAddElement} togglePopup={this.togglePopup}/>
                 <Popup  closePopup={this.closePopup}
-                        propsPopup={this.state.propsPopup}
+                        popup={this.state.popup}
                     />
             </div>
         )

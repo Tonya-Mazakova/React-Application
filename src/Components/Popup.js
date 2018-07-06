@@ -113,25 +113,24 @@ class Popup extends PureComponent {
     }
 
     renderPopup(){
-
-      if(this.props.propsPopup.todo === 'delete post'){
+      if(this.props.popup.todo === 'delete post'){
         return (
-        <PopupWrap showPopup={this.props.propsPopup.showPopup}>
+        <PopupWrap showPopup={this.props.popup.showPopup}>
             <PopupInner>
-              <TitlePopup>{this.props.propsPopup.title}</TitlePopup>
-              <Icon onClick={this.props.closePopup} name="times" className='icon-close'/>
+              <TitlePopup>{this.props.popup.title}</TitlePopup>
+              <Icon onClick={this.props.closePopup} name="times" className='icon-close anim'/>
                   <FormPopup>
                     <ButtonWrap>
                       <ButtonPopup onClick={this.props.closePopup} type="button">Cancel</ButtonPopup>
-                      <ButtonPopup onClick={()=>{this.closePopup(this.props.propsPopup.todo)}} publish type="button">Ok</ButtonPopup>
+                      <ButtonPopup onClick={()=>{this.closePopup(this.props.popup.todo)}} publish type="button">Ok</ButtonPopup>
                     </ButtonWrap>
                   </FormPopup>   
           </PopupInner>
         </PopupWrap>)
       }
-      else if(this.props.propsPopup.todo === 'edit post' || 'add post' || 'add comment'){
+      else if(this.props.popup.todo === 'edit post' || 'add post' || 'add comment'){
         let id = '';
-        switch(this.props.propsPopup.todo){
+        switch(this.props.popup.todo){
           case 'edit post':
             id = 'EditPost';
           break;
@@ -146,16 +145,16 @@ class Popup extends PureComponent {
         }
          
        return (
-          <PopupWrap id='Popup' showPopup={this.props.propsPopup.showPopup}>
+          <PopupWrap id='Popup' showPopup={this.props.popup.showPopup}>
             <PopupInner edit>
-              <TitlePopup edit>{this.props.propsPopup.title}</TitlePopup>
-              <Icon onClick={this.props.closePopup} name="times" className='icon-close'/>
+              <TitlePopup edit>{this.props.popup.title}</TitlePopup>
+              <Icon onClick={this.props.closePopup} name="times" className='icon-close anim'/>
                   <FormPopup edit>
-                    <label htmlFor="topic">{this.props.propsPopup.titleInput}</label><InputTopic id={"input"+id} type="text" onChange={this.handleChangeTopic}/>
-                    <label htmlFor="text">{this.props.propsPopup.titleTextarea}</label><TextareaPopup id={"text"+id} type="text" onChange={this.handleChangeText}/>
+                    <label htmlFor="topic">{this.props.popup.titleInput}</label><InputTopic id={"input"+id} type="text" onChange={this.handleChangeTopic}/>
+                    <label htmlFor="text">{this.props.popup.titleTextarea}</label><TextareaPopup id={"text"+id} type="text" onChange={this.handleChangeText}/>
                     <ButtonWrap>
                       <ButtonPopup onClick={this.props.closePopup} type="button">Cancel</ButtonPopup>
-                      <ButtonPopup onClick={()=>{this.closePopup(this.props.propsPopup.todo)}} publish type="button">Ok</ButtonPopup>
+                      <ButtonPopup onClick={()=>{this.closePopup(this.props.popup.todo)}} publish type="button">Ok</ButtonPopup>
                     </ButtonWrap>
                   </FormPopup>   
             </PopupInner>

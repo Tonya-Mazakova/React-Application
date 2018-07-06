@@ -113,7 +113,7 @@ class PostsList extends PureComponent {
       idView: null,
       id: null,
       pageOfItems: [],
-      propsPopup:{
+      popup:{
         title: "",
         showPopup: false,
         todo: '',
@@ -146,7 +146,7 @@ class PostsList extends PureComponent {
   togglePopup(id, todo) {
     if(todo === 'delete post'){
       this.setState({
-        propsPopup:{
+        popup:{
           title: 'Are you shure want to delete this post?',
           todo: 'delete post',
           showPopup: !this.state.showPopup    
@@ -163,7 +163,7 @@ class PostsList extends PureComponent {
         return true;
       });
       this.setState({
-        propsPopup:{
+        popup:{
           title: 'Edit post',
           todo: 'edit post',
           id:id,
@@ -193,7 +193,7 @@ class PostsList extends PureComponent {
       break;
     };
     this.setState({
-      propsPopup:{
+      popup:{
         title: '',
         todo: '',
         topic: '',
@@ -282,7 +282,7 @@ if(this.props.posts && this.props.posts.length){
     </UlPost>
     <Pagination items={this.props.posts} userId={this.props.userId} dateVal={this.props.dateVal} onChangePage={this.onChangePage}/>
     <Popup  closePopup={this.closePopup}
-            propsPopup={this.state.propsPopup}
+            popup={this.state.popup}
           />
   </Wrapper>
   )  
