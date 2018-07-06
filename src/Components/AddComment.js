@@ -14,12 +14,12 @@ class AddComment extends PureComponent{
         super(props);
         this.state={
             propsPopup:{
-                title: "",
+                title: "Add comment",
                 showPopup: false,
-                todo: '',
+                todo: 'add comment',
                 body:'',
-                titleInput:'',
-                titleTextarea:''
+                titleInput:'Enter your email',
+                titleTextarea:'Enter your comment'
             },
             propsAddElement:{
                 title:'Add comment',
@@ -31,36 +31,34 @@ class AddComment extends PureComponent{
         this.closePopup = this.closePopup.bind(this);
       }
 
-      togglePopup() {
-          this.setState({
+    togglePopup() {
+          this.setState(prevState => ({
+            ...prevState,
             propsPopup:{
-              title: 'Add comment',
-              todo: 'add comment',
-              titleInput:'Eneter your email',
-              titleTextarea:'Enter your comment',
-              showPopup: !this.state.showPopup    
-            } 
-          })
+                ...prevState.propsPopup,
+                showPopup: !this.state.showPopup 
+            }
+        }))
         }
 
     closePopup(todo, title, body){
         if(todo === 'add comment'){
          this.props.addComment(title, body, this.state.id, this.props.propsComments.idPost);
+         document.getElementById('inputAddComment').value = '';
+         document.getElementById('textAddComment').value = '';
          let id = this.state.id;
              id++;
            this.setState({
                 id:id
         })   
         }
-        this.setState({
+        this.setState(prevState => ({
+            ...prevState,
             propsPopup:{
-              title: '',
-              todo: '',
-              titleInput:'',
-              titleTextarea:'',
-              showPopup: false    
-            }  
-          })
+                ...prevState.propsPopup,
+                showPopup: false 
+            }
+        }))
     };        
 
     render(){
@@ -76,7 +74,6 @@ class AddComment extends PureComponent{
 
 
 }
-
 
 
 

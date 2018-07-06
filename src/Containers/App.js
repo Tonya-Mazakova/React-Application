@@ -2,27 +2,28 @@ import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import '../css/App.sass';
+import { fetchPosts, fetchComments, sortPosts } from "../Actions/actions";
 import PostsList from './PostsList';
 import AddPost from '../Components/AddPost';
 import Sorting from '../Components/Sorting';
 import Filtration from '../Components/Filtration';
-import { fetchPosts, fetchComments, sortPosts } from "../Actions/actions";
+import '../css/App.sass';
+
 
 
 const Wrapper = styled.div`
     margin: 0 auto;
 `;
 
+const Header = styled.div`
+    margin:0 auto;
+    width:1000px;
+`;
+
 const HeaderWrap = styled.div`
     height:70px;
     background-color:greenyellow;
     width:100%;
-`;
-
-const Header = styled.div`
-    margin:0 auto;
-    width:1000px;
 `;
 
 const HeaderBottomWrap = styled.div`

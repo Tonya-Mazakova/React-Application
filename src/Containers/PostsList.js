@@ -119,19 +119,13 @@ class PostsList extends PureComponent {
         todo: '',
         topic:'',
         body:''
-      },
-      sorting:{
-        numOptions:2,
-        items:['id <','id >']
-      }, 
-      userId: null
+      }
     };
     this.viewPost = this.viewPost.bind(this);
     this.closeViewPost = this.closeViewPost.bind(this);
     this.togglePopup = this.togglePopup.bind(this); 
     this.closePopup = this.closePopup.bind(this);
     this.onChangePage = this.onChangePage.bind(this);
-    this.onChangeSort = this.onChangeSort.bind(this);
   }
 
 
@@ -192,6 +186,8 @@ class PostsList extends PureComponent {
         break;
       case 'edit post':
         this.props.editPost(title, body, this.state.id);
+        document.getElementById('inputEditPost').value = '';
+        document.getElementById('textEditPost').value = '';
         break;
       default:
       break;
@@ -206,10 +202,6 @@ class PostsList extends PureComponent {
       }
     });
   
-  }
-
-  onChangeSort(val){
-    this.props.sortPosts(val);
   }
 
   render() {

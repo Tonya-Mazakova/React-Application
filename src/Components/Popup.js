@@ -130,14 +130,29 @@ class Popup extends PureComponent {
         </PopupWrap>)
       }
       else if(this.props.propsPopup.todo === 'edit post' || 'add post' || 'add comment'){
+        let id = '';
+        switch(this.props.propsPopup.todo){
+          case 'edit post':
+            id = 'EditPost';
+          break;
+          case 'add post':
+            id = 'AddPost';
+          break;  
+          case 'add comment':
+            id = 'AddComment';
+          break;
+          default:
+            id = '';
+        }
+         
        return (
           <PopupWrap id='Popup' showPopup={this.props.propsPopup.showPopup}>
             <PopupInner edit>
               <TitlePopup edit>{this.props.propsPopup.title}</TitlePopup>
               <Icon onClick={this.props.closePopup} name="times" className='icon-close'/>
                   <FormPopup edit>
-                    <label htmlFor="topic">{this.props.propsPopup.titleInput}</label><InputTopic id="topicInput" type="text" onChange={this.handleChangeTopic}/>
-                    <label htmlFor="text">{this.props.propsPopup.titleTextarea}</label><TextareaPopup id="bodyTextarea" type="text" onChange={this.handleChangeText}/>
+                    <label htmlFor="topic">{this.props.propsPopup.titleInput}</label><InputTopic id={"input"+id} type="text" onChange={this.handleChangeTopic}/>
+                    <label htmlFor="text">{this.props.propsPopup.titleTextarea}</label><TextareaPopup id={"text"+id} type="text" onChange={this.handleChangeText}/>
                     <ButtonWrap>
                       <ButtonPopup onClick={this.props.closePopup} type="button">Cancel</ButtonPopup>
                       <ButtonPopup onClick={()=>{this.closePopup(this.props.propsPopup.todo)}} publish type="button">Ok</ButtonPopup>

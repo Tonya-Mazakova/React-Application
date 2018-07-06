@@ -15,11 +15,11 @@ class AddPost extends PureComponent{
         this.state={
             propsPopup:{
                 showPopup: false,
-                todo: '',
-                title:'',
+                todo: 'add post',
+                title:'Add post',
                 body:'',
-                titleInput:'',
-                titleTextarea:''
+                titleInput:'Topic of the post',
+                titleTextarea:'Post text'
             },
             id:101,
             propsAddElement:{
@@ -32,15 +32,13 @@ class AddPost extends PureComponent{
 
 
       togglePopup() {
-          this.setState({
+          this.setState(prevState => ({
+            ...prevState,
             propsPopup:{
-              title: 'Add post',
-              todo: 'add post',
-              titleInput:'Topic of the post',
-              titleTextarea: 'Post text',
-              showPopup: !this.state.showPopup    
-            } 
-          })
+                ...prevState.propsPopup,
+                showPopup: !this.state.showPopup 
+            }
+        }))
         }
 
     closePopup(todo, title, body){
@@ -48,19 +46,21 @@ class AddPost extends PureComponent{
             let length = this.props.posts.length,
             userId = this.props.posts[(--length)].userId; 
          this.props.addPost(title, body, this.state.id, (++userId));
+         document.getElementById('inputAddPost').value = '';
+         document.getElementById('textAddPost').value = '';
          let id = this.state.id;
              id++;
             this.setState({
                 id:id
         })   
         }
-        this.setState({
+        this.setState(prevState => ({
+            ...prevState,
             propsPopup:{
-              title: '',
-              todo: '',
-              showPopup: false    
-            }  
-          })
+                ...prevState.propsPopup,
+                showPopup: false 
+            }
+        }))  
     };        
 
     render(){
