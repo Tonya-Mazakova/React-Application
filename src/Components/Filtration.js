@@ -1,21 +1,8 @@
 import React, { PureComponent } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import styled from 'styled-components';
 import '../css/index.sass';
-
-
-const Wrapper = styled.div`
-    padding: 15px;
-`;
-
-const SelectWrap = styled.div`
-  
-`;
-
-const FilterWrap = styled.div`
-
-`;
+import { FilterWrap } from "./style/Filtration";
 
 
 
@@ -78,20 +65,17 @@ renderSelect(){
 }
 
 
-
-
 render(){
     return (
-        <Wrapper className="d-flex">
+        <FilterWrap className="d-flex">
             <h6 className="filter-title">Filter by:</h6>
-            <SelectWrap>
-                <FilterWrap id='filter' className="filter">
-                </FilterWrap>
-            </SelectWrap>
-        </Wrapper>
+            <div>
+                <div id='filter' className="filter">
+                </div>
+            </div>
+        </FilterWrap>
         )
     }
-
 }
 
 
@@ -102,9 +86,8 @@ const mapStateToProps = state => {
       loadingPosts: state.postsReducer.loading,
       errorPosts: state.postsReducer.error
     };
-  };
-   
-  
+  };  
 
   
-  export default withRouter(connect(mapStateToProps)(Filtration));
+
+export default withRouter(connect(mapStateToProps)(Filtration));
