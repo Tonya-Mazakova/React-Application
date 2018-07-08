@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 
  
+
 class Pagination extends PureComponent {
     constructor(props) {
         super(props);
@@ -27,7 +28,7 @@ class Pagination extends PureComponent {
     }
 
     setPage(page) {    
-        let items = null, date = null;
+        let items, date, pager;
         function formatDate(date) {
             let d = new Date(date),
                 month = '' + (d.getMonth() + 1),
@@ -55,7 +56,7 @@ class Pagination extends PureComponent {
             items = this.props.items;  
         }
         
-        let pager = this.state.pager;
+        pager = this.state.pager;
     
        if (page < 1 || page > pager.totalPages) {
             return;
@@ -78,9 +79,9 @@ class Pagination extends PureComponent {
             pageSize:5
         });
  
-        var totalPages = Math.ceil(totalItems / pageSize);
+        let totalPages = Math.ceil(totalItems / pageSize);
  
-        var startPage, endPage;
+        let startPage, endPage;
         if (totalPages <= 10) {
             startPage = 1;
             endPage = totalPages;
@@ -97,11 +98,11 @@ class Pagination extends PureComponent {
             }
         }
  
-        var startIndex = (currentPage - 1) * pageSize;
-        var endIndex = Math.min(startIndex + pageSize - 1, totalItems - 1);
+        let startIndex = (currentPage - 1) * pageSize;
+        let endIndex = Math.min(startIndex + pageSize - 1, totalItems - 1);
 
 
-        var pages = [...Array((endPage + 1) - startPage).keys()].map(i => startPage + i);
+        let pages = [...Array((endPage + 1) - startPage).keys()].map(i => startPage + i);
         this.setState({
             pager: {
                 //totalPages:100
@@ -121,9 +122,9 @@ class Pagination extends PureComponent {
         };
     }
  
+
     render() {
-       
-        var pager = this.state.pager;
+        let pager = this.state.pager;
  
         if (!pager.pages || pager.pages.length <= 1) {
             return null;

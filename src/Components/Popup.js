@@ -5,7 +5,6 @@ import '../css/index.sass';
 
 
 
-
 class Popup extends PureComponent {
     constructor(props){
         super(props);
@@ -35,7 +34,6 @@ class Popup extends PureComponent {
       this.setState({ textPopup: value});
     }
     
-
     renderPopup(){     
       return(
       <div>
@@ -92,8 +90,8 @@ class Popup extends PureComponent {
 
     render() {
       return (<div>{this.renderPopup()}</div>)
+      }
     }
-  }
  
 
   const mapStateToProps = state => {

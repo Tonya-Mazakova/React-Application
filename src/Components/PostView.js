@@ -1,51 +1,12 @@
 import React, { PureComponent } from 'react';
 import { connect } from "react-redux";
 import { withRouter } from 'react-router-dom';
-import styled from 'styled-components';
-import CommentsList from "./CommentsList";
 import {Icon} from 'react-fa';
 import '../css/index.sass';
+import { Wrapper, PostWrap, TitleWrap,
+         BodyPost, BackWrap, TitlePost } from './style/PostView';
+import CommentsList from "./CommentsList";
 
-
-
-const Wrapper = styled.div`
-    width: 800px;
-    margin: 0 auto;
-`;
-
-
-const PostWrap = styled.div`
-    height: 300px;
-    background-color: azure;
-    margin: 25px auto 0;
-    border: 10px solid white;
-`;
-
-const TitleWrap = styled.div`
-    height: 80px;
-    border-bottom: 1px solid lightgoldenrodyellow;
-    background-color: lavender;
-    text-align: center;
-    font-size: 20px;
-`;
-
-const BodyPost = styled.div`
-    padding: 20px;
-    line-height: 1.5;
-`;
-
-const Back = styled.span`
-   margin-left:10px;
-`;
-
-const BackWrap = styled.a`
-    display:flex;
-    justify-content: flex-end;
-`;
-
-const Title = styled.h5`
-    line-height: 80px;
-`;
 
 
 class PostView extends PureComponent {
@@ -56,7 +17,6 @@ class PostView extends PureComponent {
             id: this.props.id,
       };
         this.closeViewPost = this.closeViewPost.bind(this);
-      
     }
 
     closeViewPost(){
@@ -69,7 +29,7 @@ class PostView extends PureComponent {
                 return (
                 <PostWrap key = {post.id}>
                      <TitleWrap>
-                        <Title className="title">{post.title}</Title>
+                        <TitlePost className="title">{post.title}</TitlePost>
                      </TitleWrap> 
                      <BodyPost>{post.body}</BodyPost>
                 </PostWrap>
@@ -77,18 +37,15 @@ class PostView extends PureComponent {
             }
             return null;
        })
-
         return (
             <Wrapper>
-                <BackWrap onClick={this.closeViewPost} className='icon-style'>
-                    <Icon name='arrow-left'/><Back>Back</Back>
+                <BackWrap onClick={this.closeViewPost} className='icon-style d-flex'>
+                    <Icon name='arrow-left'/><span className="indent">Back</span>
                 </BackWrap>
                 {renderPost}
                 <CommentsList id={this.props.id} />
             </Wrapper> 
-
         )
-
     }
 }
 
@@ -101,7 +58,6 @@ const mapStateToProps = state => {
       errorPosts: state.postsReducer.error
     };
 };
-
 
 
 
