@@ -308,7 +308,7 @@ class PostsList extends PureComponent {
   
 if(this.props.posts && this.props.posts.length){
   return(
-    <Wrapper className="container">
+    <section className="container">
       <Wrap>
       <WrapAddPost data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" onClick={()=>{this.togglePopup(this.state.addElement.id, 'add post')}}>
         <AddElement addElement={this.state.addElement}/>  
@@ -321,7 +321,7 @@ if(this.props.posts && this.props.posts.length){
     <Popup  closePopup={this.closePopup}
             popup={this.state.popup}
           />
-  </Wrapper>
+  </section>
   )  
 }
 return (

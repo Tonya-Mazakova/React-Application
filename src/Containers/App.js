@@ -7,7 +7,7 @@ import PostsList from '../Components/PostsList';
 import Sorting from '../Components/Sorting';
 import Filtration from '../Components/Filtration';
 import '../css/App.sass';
-import { HeaderTop, HeaderWrap } from './style/App.js';
+import { HeaderTop, HeaderWrap, HeaderBottomWrap } from './style/App.js';
 
 
 
@@ -57,10 +57,10 @@ class App extends PureComponent{
                     </div>
                 </HeaderTop>   
             </HeaderWrap>  
-            <section className="container center">
+            <HeaderBottomWrap className="container center">
                 <Filtration onChangeFilter={this.onChangeFilter}/>
                 <Sorting sorting={this.state.sorting} onChangeSort={this.onChangeSort}/>
-            </section>
+            </HeaderBottomWrap>
             <PostsList userId={this.state.userId} dateFilter={this.state.dateFilter} />  
           </div>  
       )

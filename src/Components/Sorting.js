@@ -1,17 +1,7 @@
 import React, { PureComponent } from 'react';
-import styled from 'styled-components';
 import '../css/index.sass';
 
 
-const Wrapper = styled.section`
-    padding: 15px;
-`;
-
-
-
-const Li = styled.li`
-    margin-left:8px;
-`;
 
 class Sorting extends PureComponent {
     constructor(props){
@@ -29,23 +19,25 @@ componentDidMount(){
 createItems(params){
     let items = [];         
     for (let i = 0; i < params.num; i++) {             
-         items.push(<Li className="nav-item" key={i} value={i}><a id={"sort-"+i} className="sort-link">{params.items[i]}</a></Li>);   
+         items.push(<li className="nav-item indent" key={i} value={i}><a id={"sort-"+i} className="sort-link">{params.items[i]}</a></li>);   
     }
     return items;
 }
 
+
 render(){
     return (
-        <Wrapper className="d-flex">
+        <div className="d-flex indent">
             <h6 className="title-filter">Sort by:</h6>
             <ul id="sort-list" className='nav justify-content-end'>
                 {this.createItems(this.props.sorting)} 
             </ul>
-        </Wrapper>
+        </div>
         )
     }
 
 }
+
 
 
 export default Sorting;

@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import '../css/index.sass';
-import { FilterWrap } from "./style/Filtration";
 
 
 
@@ -67,13 +66,13 @@ renderSelect(){
 
 render(){
     return (
-        <FilterWrap className="d-flex">
+        <div className="d-flex">
             <h6 className="filter-title">Filter by:</h6>
             <div>
                 <div id='filter' className="filter">
                 </div>
             </div>
-        </FilterWrap>
+        </div>
         )
     }
 }
