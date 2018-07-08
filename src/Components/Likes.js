@@ -44,11 +44,10 @@ class Likes extends PureComponent {
     }
   
     render(){
-  
       return(
         <Wrapper>
-          <Icon name='thumbs-up' onClick={this.updateLikes} className='icon-style'/>
-          <p>{this.state.likes}</p>
+          <Icon name='thumbs-up' onClick={this.updateLikes} className='cursor-p'/>
+          <p className="indent">{this.state.likes}</p>
         </Wrapper>
       );
   
