@@ -59,9 +59,12 @@ const editPost = (action, state)=>{
 
 const sortPosts = (action, state)=>{
   let itemsSort=[];
+ /* if(action.payload.val === 'sort-0' && state.items){
+
+  }*/
   switch(action.payload.val){
-    case '0':
-    case '1':
+    case 'sort-0':
+    case 'sort-1':
       itemsSort = state.items.reverse(); 
       return{
       ...state, 

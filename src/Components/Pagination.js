@@ -21,7 +21,7 @@ class Pagination extends PureComponent {
 
     componentDidUpdate(prevProps, prevState) {
         if (this.props.items !== prevProps.items || this.props.userId !== prevProps.userId 
-            || this.props.dateVal !== prevProps.dateVal) {
+            || this.props.dateFilter !== prevProps.dateFilter) {
             this.setPage(this.state.initialPage);
         }
     }
@@ -37,19 +37,19 @@ class Pagination extends PureComponent {
             if (day.length < 2) day = '0' + day;
             return [year, month, day].join('-');
         }
-        if(this.props.userId && !this.props.dateVal){
+        if(this.props.userId && !this.props.dateFilter){
             items = this.props.items.filter((post)=>{
                 return post.userId === Number(this.props.userId);
             })
-        }else if(this.props.dateVal && !this.props.userId){
+        }else if(this.props.dateFilter && !this.props.userId){
             items = this.props.items.filter((post)=>{
                 date = formatDate(post.date).substring(0,4);
-                return date === this.props.dateVal;
+                return date === this.props.dateFilter;
             })
-        }else if(this.props.userId && this.props.dateVal){
+        }else if(this.props.userId && this.props.dateFilter){
             items = this.props.items.filter((post)=>{
                 date = formatDate(post.date).substring(0,4);
-                return date === this.props.dateVal && post.userId === Number(this.props.userId);
+                return date === this.props.dateFilter && post.userId === Number(this.props.userId);
             })
         }else{
             items = this.props.items;  

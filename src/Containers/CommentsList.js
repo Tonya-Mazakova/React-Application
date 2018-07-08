@@ -1,11 +1,12 @@
 import React, { PureComponent } from 'react';
 import { connect } from "react-redux";
 import { withRouter } from 'react-router-dom';
+import { addComment } from '../Actions/actions';
 import styled from 'styled-components';
 import '../css/index.sass';
 import Likes from '../Components/Likes';
-import AddComment from '../Components/AddComment';
-
+import AddElement from '../Components/AddElement';
+import Popup from '../Components/Popup';
 
 
 const UlComments = styled.ul`
@@ -14,7 +15,7 @@ const UlComments = styled.ul`
 `;
 
 const LiComment = styled.li`
-    height: 130px;
+    height: 150px;
     border-bottom: 1px solid;
 `;
 
@@ -40,25 +41,47 @@ const Title = styled.h2`
     border-width: 5px;
 `;
 
+const WrapComments = styled.div`
+    background-color: azure;
+    padding: 15px;
+`;
+
 
 
 class CommentsList extends PureComponent {
     constructor(props){
         super(props);
         this.state={
-            post: this.props.post,  
-            id: this.props.id,
-            title:"Add comment",
-            propsComments:{
-                idPost: this.props.id,
-                items: this.props.comments    
+            id: 501,
+            addElement:{
+                title: 'Add comment'
+            },
+            popup:{
+                title: "Add comment",
+                todo: 'add comment',
+                body:'',
+                topicInput:'Enter your email',
+                textInput:'Enter your comment'
             }
       };
-        
+        this.closePopup = this.closePopup.bind(this);
     }
+
+    closePopup(todo, title, body){
+      if(todo === 'add comment'){
+       this.props.addComment(title, body, this.state.id, this.props.id);
+       document.getElementById('recipient-name').value = '';
+       document.getElementById('message-text').value = '';
+       let id = this.state.id;
+           id++;
+       this.setState(prevState => ({
+        ...prevState,
+        id: id
+        }))
+        }
+  };        
   
     render(){
-
         if (this.props.error) {
             return <Div>Error! {this.state.error.message}</Div>;
           }
@@ -67,7 +90,7 @@ class CommentsList extends PureComponent {
             return <Div>Loading...</Div>;
           }
        const renderComments = this.props.comments.map((comment)=>{
-           if(comment.postId === this.state.id){
+           if(comment.postId === this.props.id){
                return (
                 <LiComment key = {comment.id}>
                     <CommentEmail>{comment.email}</CommentEmail>
@@ -81,11 +104,18 @@ class CommentsList extends PureComponent {
 
       return (
           <div>
-          <AddComment propsComments={this.state.propsComments} />
-          <UlComments>
-             <Title>Comments</Title> 
-            {renderComments} 
-          </UlComments>   
+            <div data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" >
+                <AddElement addElement={this.state.addElement} />
+           </div>
+           <WrapComments>
+            <Title>Comments</Title> 
+            <UlComments> 
+                {renderComments} 
+            </UlComments>  
+           </WrapComments> 
+          <Popup  closePopup={this.closePopup}
+                        popup={this.state.popup}
+                    />
           </div>
       )
     }      
@@ -103,6 +133,8 @@ const mapStateToProps = state => {
     };
 };
 
+const mapDispatchToProps =  {
+    addComment
+  };
 
-
-export default withRouter(connect(mapStateToProps)(CommentsList));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CommentsList));

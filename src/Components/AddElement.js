@@ -18,7 +18,6 @@ const IconWrapper = styled.div`
 `;
 
 const IconStyle = styled.div`
-    font-weight: bold;
     width:132px;
     height:70px;
     line-height:70px;
@@ -35,11 +34,12 @@ class AddElement extends PureComponent{
 
     render(){
         return (
-            <IconWrapper onClick={this.props.togglePopup}>
+            <IconWrapper >
                 <IconStyle className='anim'>
-                    <span>{this.props.propsAddElement.title}</span>
+                    <span>{this.props.addElement.title}</span>
                     <Icon name='plus' style={iconStyle}/>
                 </IconStyle>
+           
             </IconWrapper>
         
         )

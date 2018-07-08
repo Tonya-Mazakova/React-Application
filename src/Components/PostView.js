@@ -21,14 +21,12 @@ const PostWrap = styled.div`
     border: 10px solid white;
 `;
 
-const TitlePost = styled.div`
-    font-weight: bold;
+const TitleWrap = styled.div`
     height: 80px;
     border-bottom: 1px solid lightgoldenrodyellow;
     background-color: lavender;
     text-align: center;
     font-size: 20px;
-    line-height: 80px;
 `;
 
 const BodyPost = styled.div`
@@ -43,10 +41,12 @@ const Back = styled.div`
 const BackWrap = styled.div`
     display:flex;
     justify-content: flex-end;
-    margin-top: 50px;
+    //margin-top: 50px;
 `;
 
-
+const Title = styled.h5`
+    line-height: 80px;
+`;
 
 
 class PostView extends PureComponent {
@@ -69,10 +69,12 @@ class PostView extends PureComponent {
             if(post.id === this.state.id){
                 return (
                 <PostWrap key = {post.id}>
-                     <TitlePost>{post.title}</TitlePost> 
+                     <TitleWrap>
+                        <Title className="title">{post.title}</Title>
+                     </TitleWrap> 
                      <BodyPost>{post.body}</BodyPost>
                 </PostWrap>
-                 )   
+                )   
             }
             return null;
        })

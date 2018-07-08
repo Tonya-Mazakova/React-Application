@@ -1,29 +1,21 @@
 import React, { PureComponent } from 'react';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 import '../css/index.sass';
 
 
 const Wrapper = styled.div`
     padding: 15px;
-    background: lavender;
-`;
-
-const Title = styled.h4`
- 
 `;
 
 const SelectWrap = styled.div`
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-top:10px;
+  
 `;
 
 const FilterWrap = styled.div`
-    display: flex;
-    flex-direction: row;
-`;
 
+`;
 
 
 
@@ -31,56 +23,70 @@ class Filtration extends PureComponent {
     constructor(props){
         super(props);
         this.state={
-           htmlObject: null,
-           numOptions: null,
-           renderFilter: false
+            title: ['date'],
+            numSelect: 1,
+            numOptions:[8],
+            items:[['none', '2012', '2013', '2014', 
+                    '2015', '2016', '2017', '2018']],
+            renderFilter: false,
+            countUserId: 10,
+            dateVal: null
         };
     this.renderSelect = this.renderSelect.bind(this);
     }
 
 componentDidMount(){
-    let htmlObject = document.getElementById('filter');
-    this.setState({
-        htmlObject: htmlObject
-    });
+    let date = null;
+    this.renderSelect();
+    document.getElementById(`filterSelect0`).addEventListener('click', (e)=>{
+        if(e.target.value !== 'none'){
+            date = e.target.value;      
+            this.props.onChangeFilter(date);       
+        }else{
+            date = '';
+            this.props.onChangeFilter(date); 
+        }    
+   }, false); 
+   /* for(let i=0 ; i< this.state.title.length; i++){
+        if(this.state.title[i] === 'date'){
+          document.getElementById(`filterSelect${i}`).addEventListener('click', (e)=>{
+              if(e.target.value !== 'none'){
+                  date = e.target.value;      
+                  this.props.onChangeFilter(date);       
+              }else{
+                  date = '';
+                  this.props.onChangeFilter(date); 
+              }    
+         }, false); 
+      } 
+    }*/
 }
 
-componentDidUpdate(prevProps, prevState) {
-    if (this.props.filtration !== prevProps.filtration) {
-        if(!this.state.renderFilter){
-            this.renderSelect(this.state.htmlObject, this.props.filtration);    
-        }
-    }
-}
 
+renderSelect(){
+    let selectHTML = '', filterDiv = null;
 
-renderSelect(htmlObject, param){
-    let selectHTML = '', elDiv = null;
-    this.setState({
-        renderFilter: true
-    })
-    for(let i = 0; i < param.numSelect; i++){
-        selectHTML = `<div id="filter${i}"><TitleFilter class="titleSelect">${this.props.filtration.title[i]}</TitleFilter><select id='filterSelect${i}' class='filterSelect'>`;    
-        for(let j = 0; j < param.numOptions[i]; j++){
-            selectHTML += "<option value='" + param.items[i][j] + "'>" + param.items[i][j] + "</option>";
+    for(let i = 0; i < this.state.numSelect; i++){
+        selectHTML = `<div id="filter${i}"><h7 class="title-select">${this.state.title[i]}</h7><select id='filterSelect${i}' class='filter-select'>`;    
+        for(let j = 0; j < this.state.numOptions[i]; j++){
+            selectHTML += "<option class='filter-option' value='" + this.state.items[i][j] + "'>" + this.state.items[i][j] + "</option>";
         }   
         selectHTML += "</select></div>";
-        elDiv = document.createElement('div');
-        elDiv.innerHTML = selectHTML;
-        htmlObject.appendChild(elDiv);
+        filterDiv = document.getElementById('filter');
+        filterDiv.innerHTML = selectHTML;
     }
-
-    this.props.onChangeFilter();
 }
+
+
 
 
 render(){
-   
     return (
-        <Wrapper>
-            <Title>Filter by:</Title>
+        <Wrapper className="d-flex">
+            <h6 className="filter-title">Filter by:</h6>
             <SelectWrap>
-                <FilterWrap id='filter' className="filter"></FilterWrap>
+                <FilterWrap id='filter' className="filter">
+                </FilterWrap>
             </SelectWrap>
         </Wrapper>
         )
@@ -90,5 +96,15 @@ render(){
 
 
 
+const mapStateToProps = state => { 
+    return {
+      posts: state.postsReducer.items,
+      loadingPosts: state.postsReducer.loading,
+      errorPosts: state.postsReducer.error
+    };
+  };
+   
+  
 
-export default Filtration;
+  
+  export default withRouter(connect(mapStateToProps)(Filtration));

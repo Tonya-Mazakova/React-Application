@@ -1,6 +1,4 @@
 import React, { PureComponent } from 'react';
-import styled from 'styled-components';
-import {Icon} from 'react-fa';
 import { connect } from "react-redux";
 import { withRouter } from 'react-router-dom';
 import '../css/index.sass';
@@ -8,88 +6,19 @@ import '../css/index.sass';
 
 
 
-
-const PopupWrap = styled.div`
-    display:${(props) => props.showPopup ? 'block' : 'none'};
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
-    background-color: rgba(0,0,0, 0.5);
-`; 
-
-const PopupInner = styled.div`
-    text-align: center;
-    position: absolute;
-    left: ${(props) => props.edit ? '27%' : '30%'};
-    right: ${(props) => props.edit ? '27%' : '30%'};
-    top: ${(props) => props.edit ? '20%' : '30%'};
-    bottom: ${(props) => props.edit ? '20%' : '30%'};
-    margin: 0 auto;
-    padding: 15px 25px 0 25px;
-    background-color: lightgoldenrodyellow;
-`; 
-
-const TitlePopup = styled.h2`
-    margin-top: ${(props) => props.edit ? '10px' : '35px'};
-`;
-
-
-const FormPopup = styled.form`
-    display: flex;
-    flex-direction:column;
-    margin-top: ${(props) => props.edit ? '10px' : '70px'};
-    line-height: 35px;
-`;
-
-const InputTopic = styled.input`
-    height: 40px;
-    width: 100%;
-    margin: 0 auto;
-`;
-
-const TextareaPopup = styled.textarea`
-    margin: 0 auto;
-    height: 235px;
-    width: 100%;
-`;
-
-const ButtonPopup = styled.button`
-    font-weight: bold;
-    height: 40px;
-    width: 160px;
-    cursor: pointer;
-    background-color: ${(props) => props.publish ? 'greenyellow' : 'transparent'};
-    margin-right: ${(props) => props.publish ? '0' : '20px'};
-    border: ${(props)=>props.publish ? 'none' : '1px solid greenyellow'};
-    &:hover&{
-        opacity: 0.8;
-        border: ${(props)=>props.publish ? 'none' : '2px solid greenyellow'};
-    }
-`;
-
-const ButtonWrap = styled.div`
-    margin-top: 10px;
-    
-`;
-
 class Popup extends PureComponent {
     constructor(props){
         super(props);
         this.state={
+          todo:'',
+          title:'',
           topicPopup:'',
-          textPopup:'',
-          hoverClose: false
+          textPopup:''
         };
         this.closePopup = this.closePopup.bind(this);
         this.renderPopup = this.renderPopup.bind(this);
         this.handleChangeTopic = this.handleChangeTopic.bind(this);
         this.handleChangeText = this.handleChangeText.bind(this);
-        this.toggleHover = this.toggleHover.bind(this);
       }
 
     closePopup(todo) {
@@ -105,67 +34,64 @@ class Popup extends PureComponent {
       let value = e.target.value;
       this.setState({ textPopup: value});
     }
+    
 
-    toggleHover(){
-      this.setState({
-        hover: !this.state.hover
-      })
-    }
+    renderPopup(){     
+      return(
+      <div>
+        <div className="modal fade" id="exampleModalCenter" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div className="modal-dialog modal-dialog-centered" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="exampleModalCenterTitle">{this.props.popup.title}</h5>
+                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+              <div className="modal-body">
+              </div>
+              <div className="modal-footer">
+                <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={()=>{this.closePopup(this.props.popup.todo)}}>Ok</button>
+                </div>
+              </div>
+            </div>
+          </div>
 
-    renderPopup(){
-      if(this.props.popup.todo === 'delete post'){
-        return (
-        <PopupWrap showPopup={this.props.popup.showPopup}>
-            <PopupInner>
-              <TitlePopup>{this.props.popup.title}</TitlePopup>
-              <Icon onClick={this.props.closePopup} name="times" className='icon-close anim'/>
-                  <FormPopup>
-                    <ButtonWrap>
-                      <ButtonPopup onClick={this.props.closePopup} type="button">Cancel</ButtonPopup>
-                      <ButtonPopup onClick={()=>{this.closePopup(this.props.popup.todo)}} publish type="button">Ok</ButtonPopup>
-                    </ButtonWrap>
-                  </FormPopup>   
-          </PopupInner>
-        </PopupWrap>)
-      }
-      else if(this.props.popup.todo === 'edit post' || 'add post' || 'add comment'){
-        let id = '';
-        switch(this.props.popup.todo){
-          case 'edit post':
-            id = 'EditPost';
-          break;
-          case 'add post':
-            id = 'AddPost';
-          break;  
-          case 'add comment':
-            id = 'AddComment';
-          break;
-          default:
-            id = '';
-        }
-         
-       return (
-          <PopupWrap id='Popup' showPopup={this.props.popup.showPopup}>
-            <PopupInner edit>
-              <TitlePopup edit>{this.props.popup.title}</TitlePopup>
-              <Icon onClick={this.props.closePopup} name="times" className='icon-close anim'/>
-                  <FormPopup edit>
-                    <label htmlFor="topic">{this.props.popup.titleInput}</label><InputTopic id={"input"+id} type="text" onChange={this.handleChangeTopic}/>
-                    <label htmlFor="text">{this.props.popup.titleTextarea}</label><TextareaPopup id={"text"+id} type="text" onChange={this.handleChangeText}/>
-                    <ButtonWrap>
-                      <ButtonPopup onClick={this.props.closePopup} type="button">Cancel</ButtonPopup>
-                      <ButtonPopup onClick={()=>{this.closePopup(this.props.popup.todo)}} publish type="button">Ok</ButtonPopup>
-                    </ButtonWrap>
-                  </FormPopup>   
-            </PopupInner>
-          </PopupWrap>)  
-        }
+        <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div className="modal-dialog" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="exampleModalLabel">{this.props.popup.title}</h5>
+                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div className="modal-body">
+              <form>
+                <div className="form-group">
+                  <label htmlFor="recipient-name" className="col-form-label">{this.props.popup.topicInput}</label>
+                  <input type="text" className="form-control" id="recipient-name" onChange={this.handleChangeTopic}/>
+                </div>
+                <div className="form-group">
+                  <label htmlFor="message-text" className="col-form-label">{this.props.popup.textInput}</label>
+                  <textarea className="form-control" id="message-text" onChange={this.handleChangeText}></textarea>
+                </div>
+                </form>
+              </div>
+            <div className="modal-footer">
+              <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancel</button>
+              <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={()=>{this.closePopup(this.props.popup.todo)}}>Ok</button>
+            </div>
+          </div>
+        </div>
+      </div>  
+    </div>
+      )
     }
 
     render() {
-      return(
-        <div>{this.renderPopup()}</div>
-      )
+      return (<div>{this.renderPopup()}</div>)
     }
   }
  
