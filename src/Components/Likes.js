@@ -1,16 +1,7 @@
 import React, { PureComponent } from 'react';
-import styled from 'styled-components';
 import {Icon} from 'react-fa';
 import '../css/index.sass';
-
-
-const Wrapper = styled.div`
-    display: flex;
-    flex-direction: row;  
-    justify-content: flex-end;
-    align-items: baseline;
-    margin-top: 15px;  
-`;
+import { LikesWrap } from './style/Likes';
 
 
 
@@ -45,10 +36,10 @@ class Likes extends PureComponent {
   
     render(){
       return(
-        <Wrapper>
+        <LikesWrap className="center">
           <Icon name='thumbs-up' onClick={this.updateLikes} className='cursor-p'/>
           <p className="indent">{this.state.likes}</p>
-        </Wrapper>
+        </LikesWrap>
       );
   
     }
