@@ -52,7 +52,7 @@ const IconStyle = styled.span`
     border-right:none;
   }
   &:hover&{
-    color:cornflowerblue;
+    color:#007bff;
   }
 `;
 
@@ -98,6 +98,7 @@ const WrapInnerPost = styled.div`
 
 const WrapAddPost = styled.div`
   width: 100px;
+  text-align: right;
 `;
 
 const Wrap = styled.div`

@@ -34,14 +34,13 @@ const BodyPost = styled.div`
     line-height: 1.5;
 `;
 
-const Back = styled.div`
+const Back = styled.span`
    margin-left:10px;
 `;
 
-const BackWrap = styled.div`
+const BackWrap = styled.a`
     display:flex;
     justify-content: flex-end;
-    //margin-top: 50px;
 `;
 
 const Title = styled.h5`

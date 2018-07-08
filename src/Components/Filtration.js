@@ -23,7 +23,7 @@ class Filtration extends PureComponent {
     constructor(props){
         super(props);
         this.state={
-            title: ['date'],
+            title: ['Date'],
             numSelect: 1,
             numOptions:[8],
             items:[['none', '2012', '2013', '2014', 

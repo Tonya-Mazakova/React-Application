@@ -6,7 +6,7 @@ import '../css/index.sass';
 
 
 const iconStyle = {
-    paddingLeft: '10px'
+    marginLeft: '10px'
 };
 
 

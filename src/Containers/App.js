@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import {Icon} from 'react-fa';
@@ -8,33 +7,7 @@ import PostsList from './PostsList';
 import Sorting from '../Components/Sorting';
 import Filtration from '../Components/Filtration';
 import '../css/App.sass';
-
-
-
-const HeaderTop = styled.div`
-    margin:0 auto;
-    height:70px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-`;
-
-const HeaderWrap = styled.div`
-    border-bottom: 1px solid #e5e5e5;
-    width:100%;
-`;
-
-const HeaderBottomWrap = styled.section`
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    height: 50px;
-`;
-
-const SignUp = styled.a`
-   margin-left: 10px;
-`;
+import { HeaderTop, HeaderWrap } from './style/app.js';
 
 
 
@@ -76,18 +49,18 @@ class App extends PureComponent{
       return(
           <div>  
             <HeaderWrap>
-                <HeaderTop className="container">
+                <HeaderTop className="container center">
                     <a>Subscribe</a>     
                     <div>   
                         <Icon name="search" />
-                        <SignUp className="btn btn-sm btn-outline-secondary">Sign up</SignUp>
+                        <a className="btn btn-sm btn-outline-secondary indent">Sign up</a>
                     </div>
                 </HeaderTop>   
             </HeaderWrap>  
-            <HeaderBottomWrap className="container">
+            <section className="container center">
                 <Filtration onChangeFilter={this.onChangeFilter}/>
                 <Sorting sorting={this.state.sorting} onChangeSort={this.onChangeSort}/>
-            </HeaderBottomWrap>
+            </section>
             <PostsList userId={this.state.userId} dateFilter={this.state.dateFilter} />  
           </div>  
       )
