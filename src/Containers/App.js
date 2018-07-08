@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import {Icon} from 'react-fa';
 import { fetchPosts, fetchComments, sortPosts } from "../Actions/actions";
-import PostsList from './PostsList';
+import PostsList from '../Components/PostsList';
 import Sorting from '../Components/Sorting';
 import Filtration from '../Components/Filtration';
 import '../css/App.sass';
-import { HeaderTop, HeaderWrap } from './style/app.js';
+import { HeaderTop, HeaderWrap } from './style/App.js';
 
 
 

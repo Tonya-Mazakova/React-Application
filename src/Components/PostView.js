@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { connect } from "react-redux";
 import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
-import CommentsList from "../Containers/CommentsList";
+import CommentsList from "./CommentsList";
 import {Icon} from 'react-fa';
 import '../css/index.sass';
 
