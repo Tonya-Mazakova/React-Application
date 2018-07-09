@@ -49,24 +49,26 @@ class App extends PureComponent{
   render(){
       return(
           <div>  
-            <HeaderWrap>
-                <HeaderTop className="container center">
-                    <a>Subscribe</a>     
-                    <div>   
-                        <Icon name="search" />
-                        <a className="btn btn-sm btn-outline-secondary indent">Sign up</a>
+            <section>  
+                <HeaderWrap>
+                    <HeaderTop className="container center">
+                        <a>Subscribe</a>     
+                        <div>   
+                            <Icon name="search" />
+                            <a className="btn btn-sm btn-outline-secondary indent">Sign up</a>
+                        </div>
+                    </HeaderTop>       
+                </HeaderWrap>  
+                <NavWrap>
+                    <div className="container">
+                        <Navigation/>
                     </div>
-                </HeaderTop>       
-            </HeaderWrap>  
-            <NavWrap>
-                <div className="container">
-                    <Navigation/>
-                </div>
-            </NavWrap>
-            <HeaderBottomWrap className="container center">
-                <Filtration onChangeFilter={this.onChangeFilter}/>
-                <Sorting sorting={this.state.sorting} onChangeSort={this.onChangeSort}/>
-            </HeaderBottomWrap>
+                </NavWrap>
+                <HeaderBottomWrap className="container center">
+                    <Filtration onChangeFilter={this.onChangeFilter}/>
+                    <Sorting sorting={this.state.sorting} onChangeSort={this.onChangeSort}/>
+                </HeaderBottomWrap>
+            </section>
             <PostsList userId={this.state.userId} dateFilter={this.state.dateFilter} />  
           </div>  
       )

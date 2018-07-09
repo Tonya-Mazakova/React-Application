@@ -53,9 +53,9 @@ renderSelect(){
     let selectHTML = '', filterDiv = null;
 
     for(let i = 0; i < this.state.numSelect; i++){
-        selectHTML = `<div id="filter${i}"><h7 class="title-select">${this.state.title[i]}</h7><select id='filterSelect${i}' class='filter-select'>`;    
+        selectHTML = `<div id="filter${i}"><h7 class="title-select">${this.state.title[i]}</h7><select id='filterSelect${i}' class='filter-select cursor-p'>`;    
         for(let j = 0; j < this.state.numOptions[i]; j++){
-            selectHTML += "<option class='filter-option' value='" + this.state.items[i][j] + "'>" + this.state.items[i][j] + "</option>";
+            selectHTML += "<option class='filter-option cursor-p' value='" + this.state.items[i][j] + "'>" + this.state.items[i][j] + "</option>";
         }   
         selectHTML += "</select></div>";
         filterDiv = document.getElementById('filter');

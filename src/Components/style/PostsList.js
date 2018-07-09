@@ -27,7 +27,8 @@ const IconStyle = styled.span`
         border-right:none;
     }
     &:hover&{
-        color:#007bff;
+        //color:#007bff;
+        color: #05F2AE;
     }
 `;
 
