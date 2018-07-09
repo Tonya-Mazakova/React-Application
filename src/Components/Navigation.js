@@ -7,16 +7,16 @@ class Navigation extends PureComponent{
     render(){
         return (<div className='nav-scroller py-1 mb-2'>
                         <nav className="nav d-flex justify-content-between">
-                        <a className="p-2" href="#">World</a>
-                        <a className="p-2" href="#">Technology</a>
-                        <a className="p-2" href="#">Culture</a>
-                        <a className="p-2" href="#">Health</a>
-                        <a className="p-2" href="#">Buisness</a>
-                        <a className="p-2" href="#">Style</a>
-                        <a className="p-2" href="#">Opinion</a>
-                        <a className="p-2" href="#">Travel</a>
-                        <a className="p-2" href="#">Design</a>
-                        <a className="p-2" href="#">Music</a>
+                        <a className="p-2" href={null}>World</a>
+                        <a className="p-2" href={null}>Technology</a>
+                        <a className="p-2" href={null}>Culture</a>
+                        <a className="p-2" href={null}>Health</a>
+                        <a className="p-2" href={null}>Buisness</a>
+                        <a className="p-2" href={null}>Style</a>
+                        <a className="p-2" href={null}>Opinion</a>
+                        <a className="p-2" href={null}>Travel</a>
+                        <a className="p-2" href={null}>Design</a>
+                        <a className="p-2" href={null}>Music</a>
                     </nav>
                 </div>)
         }

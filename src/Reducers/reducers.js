@@ -26,7 +26,7 @@ const addingPost = (action, state) => {
   function randomDate(start, end) {
     return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
   };
-  date = randomDate(new Date(2012, 0, 1), new Date());
+  date = randomDate(new Date(2010, 0, 1), new Date());
   action.payload.date = date;
   items.push(action.payload);
   return {
@@ -96,7 +96,7 @@ function postsReducer(state = initialStatePosts, action) {
           return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
         };
         items = action.payload.map((post)=>{
-          date = randomDate(new Date(2012, 0, 1), new Date());
+          date = randomDate(new Date(2010, 0, 1), new Date());
           post.date = date;
           return post; 
         });

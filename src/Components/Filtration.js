@@ -11,8 +11,8 @@ class Filtration extends PureComponent {
         this.state={
             title: ['Date'],
             numSelect: 1,
-            numOptions:[8],
-            items:[['none', '2012', '2013', '2014', 
+            numOptions:[10],
+            items:[['none', '2010','2011','2012', '2013', '2014', 
                     '2015', '2016', '2017', '2018']],
             renderFilter: false,
             countUserId: 10,
