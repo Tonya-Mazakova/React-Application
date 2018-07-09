@@ -133,23 +133,23 @@ class Pagination extends PureComponent {
         }
 
         return (
-            <UlPagination id='pagination' className="center">
-                <LiPagination className={pager.currentPage === 1 ? 'disabled' : ''}>
-                    <a onClick={() => this.setPage(1)}>First</a>
+            <UlPagination id='pagination' className="pagination center">
+                <LiPagination className={pager.currentPage === 1 ? 'disabled page-item' : ''}>
+                    <a className="page-link color-second" onClick={() => this.setPage(1)}>First</a>
                 </LiPagination>
-                <LiPagination className={pager.currentPage === 1 ? 'disabled' : ''}>
-                    <a onClick={() => this.setPage(pager.currentPage - 1)}>Previous</a>
+                <LiPagination className={pager.currentPage === 1 ? 'disabled page-item' : ''}>
+                    <a className="page-link color-second" onClick={() => this.setPage(pager.currentPage - 1)}>Previous</a>
                 </LiPagination>
                 {pager.pages.map((page, index) =>
-                    <LiPagination id={page} key={index} className={pager.currentPage === page ? 'activePage' : ''}>
-                        <a onClick={() => this.setPage(page)}>{page}</a>
+                    <LiPagination id={page} key={index} className={pager.currentPage === page ? 'activePage page-item' : ''}>
+                        <a className="page-link color-second" onClick={() => this.setPage(page)}>{page}</a>
                     </LiPagination>
                 )}
-                <LiPagination className={pager.currentPage === pager.totalPages ? 'disabled' : ''}>
-                    <a onClick={() => this.setPage(pager.currentPage + 1)}>Next</a>
+                <LiPagination className={pager.currentPage === pager.totalPages ? 'disabled page-item' : ''}>
+                    <a className="page-link color-second" onClick={() => this.setPage(pager.currentPage + 1)}>Next</a>
                 </LiPagination>
-                <LiPagination className={pager.currentPage === pager.totalPages ? 'disabled' : ''}>
-                    <a onClick={() => this.setPage(pager.totalPages)}>Last</a>
+                <LiPagination className={pager.currentPage === pager.totalPages ? 'disabled page-item' : ''}>
+                    <a className="page-link color-second" onClick={() => this.setPage(pager.totalPages)}>Last</a>
                 </LiPagination>
             </UlPagination>
         );
