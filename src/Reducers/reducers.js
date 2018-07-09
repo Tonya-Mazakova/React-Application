@@ -56,21 +56,27 @@ const editPost = (action, state)=>{
 
 const sortPosts = (action, state)=>{
   let itemsSort=[];
- /* if(action.payload.val === 'sort-0' && state.items){
-
-  }*/
   switch(action.payload.val){
     case 'sort-0':
-    case 'sort-1':
-      itemsSort = state.items.reverse(); 
+      if(state.items[0].id > state.items[state.items.length-1].id){
+        itemsSort = state.items.reverse(); 
       return{
       ...state, 
-      items:[...itemsSort]
-    };
+      items:[...itemsSort] 
+      }
+    };break
+    case 'sort-1':
+      if(state.items[0].id < state.items[state.items.length-1].id){
+        itemsSort = state.items.reverse(); 
+      return{
+      ...state, 
+      items:[...itemsSort] 
+     }
+   };break
     default:
       return state;
   }
-
+  return state;  
 };
 
 

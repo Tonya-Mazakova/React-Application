@@ -15,6 +15,7 @@ const LiPost = styled.li`
 const BPost = styled.p`
     margin-top: 10px;
     line-height: 1.4;
+    padding-right: 5px;
 `;
 
 const IconStyle = styled.span`
