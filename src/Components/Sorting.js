@@ -19,7 +19,7 @@ componentDidMount(){
 createItems(params){
     let items = [];         
     for (let i = 0; i < params.num; i++) {             
-         items.push(<LiSorting className="nav-item indent" key={i} value={i}><a id={"sort-"+i} className="sort-link">{params.items[i]}</a></LiSorting>);   
+         items.push(<LiSorting className="nav-item indent cursor-p" key={i} value={i}><a id={"sort-"+i} className="sort-link">{params.items[i]}</a></LiSorting>);   
     }
     return items;
 }
@@ -27,7 +27,7 @@ createItems(params){
 
 render(){
     return (
-        <div className="d-flex indent">
+        <div className="center indent">
             <h6 className="title-filter">Sort by:</h6>
             <ul id="sort-list" className='nav justify-content-end'>
                 {this.createItems(this.props.sorting)} 

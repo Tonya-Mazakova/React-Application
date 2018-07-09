@@ -9,7 +9,8 @@ const UlPagination = styled.ul`
 const LiPagination = styled.li`
     padding-right: 5px;
     &:hover&{
-        color:#6cacf0;
+        //color:#6cacf0;
+        color: #57f7ca;
     }
 `;
 

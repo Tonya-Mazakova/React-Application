@@ -22,9 +22,14 @@ class Filtration extends PureComponent {
     }
 
 componentDidMount(){
-    let date = null;
+    let date, val = 0;
     this.renderSelect();
-    document.getElementById(`filterSelect0`).addEventListener('click', (e)=>{
+    for(let i=0 ; i< this.state.title.length; i++){
+        if(this.state.title[i] === 'date'){
+            val = i;
+      } 
+    } 
+    document.getElementById(`filterSelect${val}`).addEventListener('click', (e)=>{
         if(e.target.value !== 'none'){
             date = e.target.value;      
             this.props.onChangeFilter(date);       
@@ -32,20 +37,7 @@ componentDidMount(){
             date = '';
             this.props.onChangeFilter(date); 
         }    
-   }, false); 
-   /* for(let i=0 ; i< this.state.title.length; i++){
-        if(this.state.title[i] === 'date'){
-          document.getElementById(`filterSelect${i}`).addEventListener('click', (e)=>{
-              if(e.target.value !== 'none'){
-                  date = e.target.value;      
-                  this.props.onChangeFilter(date);       
-              }else{
-                  date = '';
-                  this.props.onChangeFilter(date); 
-              }    
-         }, false); 
-      } 
-    }*/
+    }, false); 
 }
 
 
