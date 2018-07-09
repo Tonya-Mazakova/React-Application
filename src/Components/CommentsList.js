@@ -32,15 +32,15 @@ class CommentsList extends PureComponent {
 
     closePopup(todo, title, body){
       if(todo === 'add comment'){
-       this.props.addComment(title, body, this.state.id, this.props.id);
-       document.getElementById('recipient-name').value = '';
-       document.getElementById('message-text').value = '';
-       let id = this.state.id;
-           id++;
-       this.setState(prevState => ({
-        ...prevState,
-        id: id
-        }))
+        this.props.addComment(title, body, this.state.id, this.props.id);
+        document.getElementById('recipient-name').value = '';
+        document.getElementById('message-text').value = '';
+        let id = this.state.id;
+               id++;
+        this.setState(prevState => ({
+            ...prevState,
+            id: id
+            }))
         }
     };        
   

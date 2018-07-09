@@ -3,11 +3,12 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import {Icon} from 'react-fa';
 import { fetchPosts, fetchComments, sortPosts } from "../Actions/actions";
+import Navigation from '../Components/Navigation';
 import PostsList from '../Components/PostsList';
 import Sorting from '../Components/Sorting';
 import Filtration from '../Components/Filtration';
 import '../css/App.sass';
-import { HeaderTop, HeaderWrap, HeaderBottomWrap } from './style/App.js';
+import { HeaderTop, HeaderWrap, HeaderBottomWrap, NavWrap } from './style/App.js';
 
 
 
@@ -55,8 +56,13 @@ class App extends PureComponent{
                         <Icon name="search" />
                         <a className="btn btn-sm btn-outline-secondary indent">Sign up</a>
                     </div>
-                </HeaderTop>   
+                </HeaderTop>       
             </HeaderWrap>  
+            <NavWrap>
+                <div className="container">
+                    <Navigation/>
+                </div>
+            </NavWrap>
             <HeaderBottomWrap className="container center">
                 <Filtration onChangeFilter={this.onChangeFilter}/>
                 <Sorting sorting={this.state.sorting} onChangeSort={this.onChangeSort}/>

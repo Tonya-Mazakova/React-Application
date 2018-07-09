@@ -14,10 +14,14 @@ const HeaderBottomWrap = styled.section`
     height: 60px;
 `;
 
+const NavWrap = styled.div`
+    background: #f5f2c4;
+`;
 
 
 export {
     HeaderTop,
     HeaderWrap,
-    HeaderBottomWrap
+    HeaderBottomWrap,
+    NavWrap
 }

@@ -19,14 +19,12 @@ class PostsList extends PureComponent {
   constructor(props){
     super(props);
     this.state={
-      activePage: null,
       viewPost: false,
       idView: null,
       id: null,
       pageOfItems: [],
       popup:{
         title: "",
-        showPopup: false,
         todo: '',
         topicInput:'Topic of the post',
         textInput:'Post Text',
@@ -63,22 +61,22 @@ class PostsList extends PureComponent {
     if(todo === 'add post'){
       this.setState(prevState => ({
         ...prevState,
+        id:id,
         popup:{
             ...prevState.popup,
             title: 'Add post',
             todo: 'add post',
-            showPopup: !this.state.showPopup 
         }
     }))
     }
     else if(todo === 'delete post'){
       this.setState(prevState => ({
         ...prevState,
+        id:id,
         popup:{
             ...prevState.popup,
             title: 'Are you shure want to delete this post?',
             todo: 'delete post',
-            showPopup: !this.state.showPopup 
         }
     }))
     }else if(todo === 'edit post'){
@@ -93,6 +91,7 @@ class PostsList extends PureComponent {
       });
       this.setState(prevState => ({
         ...prevState,
+        id:id,
         popup:{
             ...prevState.popup,
             title: 'Edit post',
@@ -100,11 +99,9 @@ class PostsList extends PureComponent {
             id:id,
             topic: title,
             body: body,
-            showPopup: !this.state.showPopup 
         }
     })) 
     }
-    this.setState({id: id});
   }  
 
   closePopup(todo, title, body){
@@ -125,16 +122,19 @@ class PostsList extends PureComponent {
         document.getElementById('recipient-name').value = '';
         document.getElementById('message-text').value = '';
         break;
+
       case 'delete post':
         this.props.deletePost(this.state.id);
         break;
+
       case 'edit post':
         this.props.editPost(title, body, this.state.id);
         document.getElementById('recipient-name').value = '';
         document.getElementById('message-text').value = '';
         break;
+
       default:
-      break;
+        break;
     };  
   }
 

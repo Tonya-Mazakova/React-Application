@@ -15,13 +15,11 @@ import {
 
 
 
-
 const initialStatePosts = {
     items: [],
     loading: false,
     error: null
   };
-
 
 const addingPost = (action, state) => {
   let items = state.items, date = null;
@@ -36,7 +34,6 @@ const addingPost = (action, state) => {
   items:[...items]
   }
 };
-
 
 const deletePost = (action, state)=>{
   let itemsFilter = state.items.filter((post) =>
@@ -75,8 +72,6 @@ const sortPosts = (action, state)=>{
   }
 
 };
-
-
 
 
 function postsReducer(state = initialStatePosts, action) {
@@ -134,7 +129,6 @@ function postsReducer(state = initialStatePosts, action) {
 
 
 
-
 const initialStateComments = {
   items: [],
   loading: false,
@@ -149,7 +143,6 @@ const addingComment = (action, state) => {
   items:[...items]
   }
 };
-
 
 function commentsReducer(state = initialStateComments, action) {
   let MyState = null;
@@ -183,14 +176,10 @@ function commentsReducer(state = initialStateComments, action) {
 
 
 
-
-
 const rootReducer  = combineReducers({
     postsReducer,
     commentsReducer
 });
-
-
 
 
 
