@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react';
-
+import '../css/index.sass';
+import { UlPagination, LiPagination } from './style/Pagination';
  
+
 
 class Pagination extends PureComponent {
     constructor(props) {
@@ -131,25 +133,25 @@ class Pagination extends PureComponent {
         }
 
         return (
-            <ul id='pagination' className="pagination">
-                <li className={pager.currentPage === 1 ? 'disabled' : ''}>
+            <UlPagination id='pagination' className="center">
+                <LiPagination className={pager.currentPage === 1 ? 'disabled' : ''}>
                     <a onClick={() => this.setPage(1)}>First</a>
-                </li>
-                <li className={pager.currentPage === 1 ? 'disabled' : ''}>
+                </LiPagination>
+                <LiPagination className={pager.currentPage === 1 ? 'disabled' : ''}>
                     <a onClick={() => this.setPage(pager.currentPage - 1)}>Previous</a>
-                </li>
+                </LiPagination>
                 {pager.pages.map((page, index) =>
-                    <li id={page} key={index} className={pager.currentPage === page ? 'activePage' : ''}>
+                    <LiPagination id={page} key={index} className={pager.currentPage === page ? 'activePage' : ''}>
                         <a onClick={() => this.setPage(page)}>{page}</a>
-                    </li>
+                    </LiPagination>
                 )}
-                <li className={pager.currentPage === pager.totalPages ? 'disabled' : ''}>
+                <LiPagination className={pager.currentPage === pager.totalPages ? 'disabled' : ''}>
                     <a onClick={() => this.setPage(pager.currentPage + 1)}>Next</a>
-                </li>
-                <li className={pager.currentPage === pager.totalPages ? 'disabled' : ''}>
+                </LiPagination>
+                <LiPagination className={pager.currentPage === pager.totalPages ? 'disabled' : ''}>
                     <a onClick={() => this.setPage(pager.totalPages)}>Last</a>
-                </li>
-            </ul>
+                </LiPagination>
+            </UlPagination>
         );
     }
 }
