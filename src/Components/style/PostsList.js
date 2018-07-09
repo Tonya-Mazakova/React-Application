@@ -6,9 +6,9 @@ const LiPost = styled.li`
     display:flex;
     flex-direction:column;
     justify-content:space-between;
-    width:620px;
     background-color:azure;
     margin: 0 auto 10px;
+    padding: 0;
     box-shadow:0 0.25rem 0.75rem rgba(0, 0, 0, .05);
 `;
 

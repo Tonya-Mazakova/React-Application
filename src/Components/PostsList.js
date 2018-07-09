@@ -174,7 +174,7 @@ class PostsList extends PureComponent {
       <Route key={post.id} path={"/Post/"} render={(props)=> {
 
         return(
-        <LiPost key={post.id} className="card flex-md-row mb-4 h-md-250">   
+        <LiPost key={post.id} className="card col-md-7 flex-md-row mb-4 h-md-250">   
             <WrapPost className="card-body d-flex flex-column">
               <div>
                 <WrapTitle className="center"><h5 id={"Title" + post.id} className="title">{post.title}</h5></WrapTitle>
