@@ -39,7 +39,7 @@ class Popup extends PureComponent {
       <div>
         <div className="modal fade" id="exampleModalCenter" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
           <div className="modal-dialog modal-dialog-centered" role="document">
-            <div className="modal-content">
+            <div className="modal-content color-base">
               <div className="modal-header">
                 <h5 className="modal-title" id="exampleModalCenterTitle">{this.props.popup.title}</h5>
                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
@@ -57,8 +57,8 @@ class Popup extends PureComponent {
           </div>
 
         <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div className="modal-dialog h-100 center" role="document">
-            <div className="modal-content">
+          <div className="modal-dialog modal-dialog-centered" role="document">
+            <div className="modal-content color-base">
               <div className="modal-header">
                 <h5 className="modal-title" id="exampleModalLabel">{this.props.popup.title}</h5>
                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
