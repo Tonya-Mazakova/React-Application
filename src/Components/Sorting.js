@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import '../css/index.sass';
-
+import { LiSorting } from './style/Sorting';
 
 
 class Sorting extends PureComponent {
@@ -19,7 +19,7 @@ componentDidMount(){
 createItems(params){
     let items = [];         
     for (let i = 0; i < params.num; i++) {             
-         items.push(<li className="nav-item indent" key={i} value={i}><a id={"sort-"+i} className="sort-link">{params.items[i]}</a></li>);   
+         items.push(<LiSorting className="nav-item indent" key={i} value={i}><a id={"sort-"+i} className="sort-link">{params.items[i]}</a></LiSorting>);   
     }
     return items;
 }
