@@ -3,13 +3,13 @@ import styled from 'styled-components';
 
 
 const UlComments = styled.ul`
-    padding: 20px;
     background-color: azure;
 `;
 
 const LiComment = styled.li`
     height: 150px;
     border-bottom: 1px solid;
+    padding-top: 10px;
 `;
 
 const InfoComment = styled.div`
@@ -18,16 +18,14 @@ const InfoComment = styled.div`
 `;
 
 const CommentEmail = styled.p`
-    padding-top: 10px;
     margin-bottom: 7px;
     font-weight: bold;
 `;
 
-const TitleComment = styled.h2`
+const TitleComment = styled.h3`
     margin: 20px 0;
-    padding-bottom: 20px;
     border-bottom: 1px solid;
-    border-width: 5px;
+    border-width: 3px;
 `;
 
 const WrapComments = styled.div`
