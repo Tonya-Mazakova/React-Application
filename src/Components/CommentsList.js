@@ -55,9 +55,11 @@ class CommentsList extends PureComponent {
             const renderComments = this.props.comments.map((comment)=>{
                 if(comment.postId === this.props.id){
                     return (
-                        <LiComment key = {comment.id}>
-                            <CommentEmail>{comment.email}</CommentEmail>
-                            <p>{comment.body}</p>
+                        <LiComment className='row-md-4' key = {comment.id}>
+                            <div>
+                                <CommentEmail>{comment.email}</CommentEmail>
+                                <p>{comment.body}</p>
+                            </div>
                             <Likes/>
                         </LiComment>)   
                 }

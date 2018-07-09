@@ -16,7 +16,7 @@ const PostWrap = styled.div`
 const TitleWrap = styled.div`
     height: 80px;
     border-bottom: 1px solid lightgoldenrodyellow;
-    background-color: lavender;
+    background-color: antiquewhite;
     text-align: center;
     font-size: 20px;
 `;
