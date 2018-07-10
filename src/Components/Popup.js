@@ -42,8 +42,8 @@ class Popup extends PureComponent {
             <div className="modal-content color-base">
               <div className="modal-header">
                 <h5 className="modal-title" id="exampleModalCenterTitle">{this.props.popup.title}</h5>
-                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
+                <button type="button" className="close rotate-close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true" className="size-close">&times;</span>
                 </button>
                 </div>
               <div className="modal-body">
@@ -61,8 +61,8 @@ class Popup extends PureComponent {
             <div className="modal-content color-base">
               <div className="modal-header">
                 <h5 className="modal-title" id="exampleModalLabel">{this.props.popup.title}</h5>
-                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
+                <button type="button" className="close rotate-close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true" className="size-close">&times;</span>
                 </button>
               </div>
               <div className="modal-body">

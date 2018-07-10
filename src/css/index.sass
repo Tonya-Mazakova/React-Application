@@ -15,7 +15,8 @@ a
     text-decoration: none!important
 
 nav a:hover  
-    color: #05F2AE!important      
+    //color: #05F2AE!important   
+    color: #19f6e8 !important   
     //color: #007bff!important
 
 input
@@ -51,11 +52,12 @@ body
     color: white !important 
 
 .btn-primary
-    background-color: #05F2AE!important
-    border-color: #1bc293!important
+    background-color: #19f6e8!important
+    border-color: #6aebe2!important
 
 .btn-primary:hover
-    border-color: #2ba17f!important    
+    border-color: #5bc9c2!important
+      
 
 .modal-header
     border-bottom: none
@@ -74,15 +76,33 @@ body
     
 /***pagination***/
 .activePage
-    color: #05F2AE
-    //color: #007bff   
+    //color: #05F2AE
+    color: #19f6e8   
 
+/***popup***/
+.size-close
+    font-size: 27px!important
+
+.rotate-close:hover
+    //color: #05F2AE 
+    color: #19f6e8
+    transition-duration: .7s
+    -webkit-transition-duration: .7s
+    -moz-transition-duration: .7s
+    -o-transition-duration: .7s
+     transform: rotate(180deg)
+    -webkit-transform: rotate(180deg)
+    -moz-transform: rotate(180deg)
+    -o-transform: rotate(180deg)
+    transform: rotate(180deg)
+   
 /***filter***/
 .filter div
     margin-right: 10px
 
 .filter-select
-    outline-color: #05F2AE
+    //outline-color: #05F2AE
+    outline-color: #19f6e8
     border: none
     height: 25px  
     color: #6c757d 
@@ -93,5 +113,28 @@ body
 .filter-title
     display: flex
     align-items: center
+
+/***animation***/
+.shape 
+  fill: transparent
+  stroke-dasharray: 110 540
+  stroke-dashoffset: -254
+  stroke-width: 8px
+  stroke: #19f6e8
+  
+@keyframes draw
+  0%
+    stroke-dasharray: 110 540
+    stroke-dashoffset: -254
+    stroke-width: 7px
+
+  100%
+    stroke-dasharray: 760
+    stroke-dashoffset: 0
+    stroke-width: 2px    
+
+.svg-wrapper:hover .shape 
+  -webkit-animation: 0.5s draw linear forwards
+  animation: 0.5s draw linear forwards
 
 

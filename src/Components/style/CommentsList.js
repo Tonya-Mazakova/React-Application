@@ -35,6 +35,10 @@ const WrapComments = styled.div`
     padding: 15px;
 `;
 
+const WrapAddComment = styled.div`
+    margin-top: 18px;
+`;
+
 
 
 export{
@@ -43,5 +47,6 @@ export{
     InfoComment,
     CommentEmail,
     TitleComment,
-    WrapComments
+    WrapComments,
+    WrapAddComment
 }

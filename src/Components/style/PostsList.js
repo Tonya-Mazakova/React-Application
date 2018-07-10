@@ -28,7 +28,8 @@ const IconStyle = styled.span`
     }
     &:hover&{
         //color:#007bff;
-        color: #05F2AE;
+        //color: #05F2AE;
+        color: #19f6e8;
     }
 `;
 

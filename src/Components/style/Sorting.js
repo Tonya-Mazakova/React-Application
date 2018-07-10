@@ -7,7 +7,8 @@ const LiSorting = styled.li`
     margin-right: 8px;
     &:hover&{
         //color: #007bff !important
-        color: #05F2AE !important
+        //color: #05F2AE !important
+        color: #19f6e8 !important
     }
 `;
 

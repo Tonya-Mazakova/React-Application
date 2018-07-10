@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { addComment } from '../Actions/actions';
 import '../css/index.sass';
 import { UlComments, LiComment, InfoComment, 
-         CommentEmail, TitleComment, WrapComments } from './style/CommentsList';
+         CommentEmail, TitleComment, WrapComments, WrapAddComment } from './style/CommentsList';
 import Likes from '../Components/Likes';
 import AddElement from '../Components/AddElement';
 import Popup from '../Components/Popup';
@@ -68,9 +68,9 @@ class CommentsList extends PureComponent {
 
         return (
           <div>
-            <div data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" >
+            <WrapAddComment data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" >
                 <AddElement addElement={this.state.addElement} />
-           </div>
+           </WrapAddComment>
            <WrapComments>
             <TitleComment>Comments</TitleComment> 
             <UlComments> 
