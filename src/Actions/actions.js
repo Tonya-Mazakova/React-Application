@@ -12,9 +12,6 @@ export const ADD_COMMENT = 'ADD_COMMENT';
 
 
 
-
-
-
 export function fetchPosts() {
   return dispatch => {
     dispatch(fetchPostsBegin());
@@ -35,9 +32,6 @@ function handleErrors(response) {
   }
   return response;
 };
-
-
-
 
 export const fetchPostsBegin = () => ({
   type: FETCH_POSTS_BEGIN
@@ -78,7 +72,6 @@ export const sortPosts = (val) => ({
 });
 
 
-
 export function fetchComments() {
   return dispatch => {
     dispatch(fetchCommentsBegin());
@@ -92,8 +85,6 @@ export function fetchComments() {
       .catch(error => dispatch(fetchCommentsFailure(error)));
   };
 };
-
-
 
 export const fetchCommentsBegin = () => ({
   type: FETCH_COMMENTS_BEGIN
