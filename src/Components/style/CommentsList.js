@@ -7,7 +7,6 @@ const UlComments = styled.ul`
 `;
 
 const LiComment = styled.li`
-    //height: 150px;
     border-bottom: 1px solid;
     padding-top: 10px;
     display: flex;

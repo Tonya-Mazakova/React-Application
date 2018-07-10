@@ -38,7 +38,7 @@ class PostView extends PureComponent {
             return null;
        })
         return (
-            <Wrapper>
+            <Wrapper className="col-md-5">
                 <BackWrap onClick={this.closeViewPost} className='icon-style d-flex'>
                     <Icon name='arrow-left'/><span className="indent">Back</span>
                 </BackWrap>
