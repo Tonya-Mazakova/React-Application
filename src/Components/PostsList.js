@@ -223,8 +223,8 @@ if(this.props.posts && this.props.posts.length){
       <ul>
         {renderPosts}
       </ul>
-    <Pagination items={this.props.posts} userId={this.props.userId} dateFilter={this.props.dateFilter} onChangePage={this.onChangePage}/>
-    <Popup  closePopup={this.closePopup}
+      <Pagination items={this.props.posts} dateFilter={this.props.dateFilter} onChangePage={this.onChangePage}/>
+      <Popup  closePopup={this.closePopup}
             popup={this.state.popup}
           />
   </section>

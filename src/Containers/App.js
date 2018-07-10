@@ -5,6 +5,7 @@ import {Icon} from 'react-fa';
 import { fetchPosts, fetchComments, sortPosts } from "../Actions/actions";
 import Navigation from '../Components/Navigation';
 import PostsList from '../Components/PostsList';
+import Footer from '../Components/Footer';
 import Sorting from '../Components/Sorting';
 import Filtration from '../Components/Filtration';
 import '../css/App.sass';
@@ -16,14 +17,12 @@ class App extends PureComponent{
   constructor(props){
       super(props);
       this.state={  
-            userId: null,
             dateFilter: null,
         sorting:{
             num: 2,
             items: ['id <','id >']
         },
-        countUserId: 10
-}
+    }
     this.onChangeSort = this.onChangeSort.bind(this);
     this.onChangeFilter = this.onChangeFilter.bind(this);
   }
@@ -44,7 +43,6 @@ class App extends PureComponent{
     })  
   }
  
-
 
   render(){
       return(
@@ -69,7 +67,8 @@ class App extends PureComponent{
                     <Sorting sorting={this.state.sorting} onChangeSort={this.onChangeSort}/>
                 </HeaderBottomWrap>
             </section>
-            <PostsList userId={this.state.userId} dateFilter={this.state.dateFilter} />  
+            <PostsList dateFilter={this.state.dateFilter} />  
+            <Footer />
           </div>  
       )
   }

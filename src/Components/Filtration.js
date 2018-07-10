@@ -27,7 +27,7 @@ componentDidMount(){
     for(let i=0 ; i< this.state.title.length; i++){
         if(this.state.title[i] === 'date'){
             val = i;
-      } 
+        } 
     } 
     document.getElementById(`filterSelect${val}`).addEventListener('click', (e)=>{
         if(e.target.value !== 'none'){
