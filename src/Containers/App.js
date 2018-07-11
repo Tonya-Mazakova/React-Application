@@ -1,13 +1,11 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import {Icon} from 'react-fa';
 import { fetchPosts, fetchComments, sortPosts } from "../Actions/actions";
-import Navigation from '../Components/Navigation';
 import PostsList from '../Components/PostsList';
 import Sorting from '../Components/Sorting';
 import Filtration from '../Components/Filtration';
 import '../css/App.sass';
-import { Wrapper, HeaderTop, HeaderWrap, HeaderBottomWrap, NavWrap } from './style/App.js';
+import { Wrapper, TopMain } from './style/App.js';
 
 
 
@@ -45,24 +43,10 @@ class App extends PureComponent{
       return(
           <Wrapper>  
             <section>  
-                <HeaderWrap>
-                    <HeaderTop className="container center">
-                        <a>Subscribe</a>     
-                        <div>   
-                            <Icon name="search" />
-                            <a className="btn btn-sm btn-outline-secondary indent">Sign up</a>
-                        </div>
-                    </HeaderTop>       
-                </HeaderWrap>  
-                <NavWrap>
-                    <div className="container">
-                        <Navigation/>
-                    </div>
-                </NavWrap>
-                <HeaderBottomWrap className="container center">
+                <TopMain className="container center">
                     <Filtration onChangeFilter={this.onChangeFilter}/>
                     <Sorting sorting={this.state.sorting} onChangeSort={this.onChangeSort}/>
-                </HeaderBottomWrap>
+                </TopMain>
             </section>
             <PostsList dateFilter={this.state.dateFilter} />  
           </Wrapper>  
@@ -87,5 +71,5 @@ const mapStateToProps = state => {
     sortPosts,
   };
   
-  
+
   export default connect(mapStateToProps, mapDispatchToProps)(App);
