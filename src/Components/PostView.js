@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import { connect } from "react-redux";
-import { withRouter } from 'react-router-dom';
 import {Icon} from 'react-fa';
 import '../css/index.sass';
 import { Wrapper, PostWrap, TitleWrap,
@@ -61,4 +60,4 @@ const mapStateToProps = state => {
 
 
 
-export default withRouter(connect(mapStateToProps)(PostView));
+export default connect(mapStateToProps)(PostView);

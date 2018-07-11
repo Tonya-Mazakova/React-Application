@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 import {Icon} from 'react-fa';
 import { fetchPosts, fetchComments, sortPosts } from "../Actions/actions";
 import Navigation from '../Components/Navigation';
@@ -88,4 +87,5 @@ const mapStateToProps = state => {
     sortPosts,
   };
   
-  export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import { connect } from "react-redux";
-import { withRouter } from 'react-router-dom';
 import '../css/index.sass';
 
 
@@ -104,4 +103,4 @@ class Popup extends PureComponent {
 
 
 
-export default withRouter(connect(mapStateToProps)(Popup));
+export default connect(mapStateToProps)(Popup);

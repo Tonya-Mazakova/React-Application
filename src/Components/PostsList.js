@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import { connect } from "react-redux";
-import { withRouter } from 'react-router-dom';
 import { fetchPosts, addPost, deletePost, editPost, sortPosts} from "../Actions/actions";
 import {Icon} from 'react-fa';
 import '../css/index.sass';
@@ -245,4 +244,4 @@ const mapDispatchToProps =  {
 
 
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PostsList));
+export default connect(mapStateToProps, mapDispatchToProps)(PostsList);

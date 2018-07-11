@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import { connect } from "react-redux";
-import { withRouter } from 'react-router-dom';
 import { addComment } from '../Actions/actions';
 import '../css/index.sass';
 import { UlComments, LiComment, InfoComment, 
@@ -102,4 +101,4 @@ const mapDispatchToProps =  {
 
 
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CommentsList));
+export default connect(mapStateToProps, mapDispatchToProps)(CommentsList);

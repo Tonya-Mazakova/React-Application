@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import '../css/index.sass';
 
@@ -81,4 +80,4 @@ const mapStateToProps = state => {
 
   
 
-export default withRouter(connect(mapStateToProps)(Filtration));
+export default connect(mapStateToProps)(Filtration);
