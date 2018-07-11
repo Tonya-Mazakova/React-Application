@@ -5,11 +5,10 @@ import {Icon} from 'react-fa';
 import { fetchPosts, fetchComments, sortPosts } from "../Actions/actions";
 import Navigation from '../Components/Navigation';
 import PostsList from '../Components/PostsList';
-import Footer from '../Components/Footer';
 import Sorting from '../Components/Sorting';
 import Filtration from '../Components/Filtration';
 import '../css/App.sass';
-import { HeaderTop, HeaderWrap, HeaderBottomWrap, NavWrap } from './style/App.js';
+import { Wrapper, HeaderTop, HeaderWrap, HeaderBottomWrap, NavWrap } from './style/App.js';
 
 
 
@@ -45,7 +44,7 @@ class App extends PureComponent{
 
   render(){
       return(
-          <div>  
+          <Wrapper>  
             <section>  
                 <HeaderWrap>
                     <HeaderTop className="container center">
@@ -67,8 +66,7 @@ class App extends PureComponent{
                 </HeaderBottomWrap>
             </section>
             <PostsList dateFilter={this.state.dateFilter} />  
-            <Footer />
-          </div>  
+          </Wrapper>  
       )
   }
 }

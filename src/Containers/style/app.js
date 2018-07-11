@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 
 
+
+const Wrapper = styled.div`
+    min-height: 100%;
+`;
+
 const HeaderTop = styled.div`
     height:70px;
     justify-content: space-between;
@@ -20,6 +25,7 @@ const NavWrap = styled.div`
 
 
 export {
+    Wrapper,
     HeaderTop,
     HeaderWrap,
     HeaderBottomWrap,
