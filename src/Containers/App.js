@@ -30,7 +30,6 @@ class App extends PureComponent{
   componentWillMount() {
     this.props.fetchPosts();
     this.props.fetchComments();
-    this.props.history.push({ pathname: "Post/" });
   }
 
   onChangeSort(val){
