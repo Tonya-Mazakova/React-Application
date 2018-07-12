@@ -155,4 +155,41 @@ nav
     background: #f5f2c4
     height: 70px
 
-        
+$side: 40px
+$l: 30px
+$num: 10
+$dur: 10s
+
+@mixin plane($w, $h)
+  width: $w
+  height: $h
+  transform-style: preserve-3d
+  
+.plane
+  @include plane($side, $side)
+  
+  &.main
+    transform: rotateX(60deg) rotateZ(-30deg)
+    animation: rotate 20s infinite linear
+      
+    .circle
+      width: $side
+      height: $side
+      position: absolute
+      transform-style: preserve-3d
+      border-radius: 100%
+      //border: 1px solid white
+      box-sizing: border-box
+      box-shadow: 0 0 3px #19f6e8 , inset 0 0 3px #19f6e8
+  
+      @for $i from 1 through 5
+        &:nth-child(#{$i})
+          transform: rotateZ($i / 5 * 360deg) rotateX(63.435deg)
+  
+@keyframes rotate
+  0%
+    transform: rotateX(0) rotateY(0) rotateZ(0)
+  100%
+    transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg)
+    
+    

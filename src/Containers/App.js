@@ -23,6 +23,20 @@ class App extends PureComponent{
     this.onChangeFilter = this.onChangeFilter.bind(this);
   }
 
+  render(){
+      return(
+          <Wrapper>  
+            <section>  
+                <TopMain className="container center">
+                    <Filtration onChangeFilter={this.onChangeFilter}/>
+                    <Sorting sorting={this.state.sorting} onChangeSort={this.onChangeSort}/>
+                </TopMain>
+            </section>
+            <PostsList dateFilter={this.state.dateFilter} />  
+          </Wrapper>  
+      )
+  }
+
   componentWillMount() {
     this.props.fetchPosts();
     this.props.fetchComments();
@@ -36,21 +50,6 @@ class App extends PureComponent{
     this.setState({
         dateFilter: date
     })  
-  }
- 
-
-  render(){
-      return(
-          <Wrapper>  
-            <section>  
-                <TopMain className="container center">
-                    <Filtration onChangeFilter={this.onChangeFilter}/>
-                    <Sorting sorting={this.state.sorting} onChangeSort={this.onChangeSort}/>
-                </TopMain>
-            </section>
-            <PostsList dateFilter={this.state.dateFilter} />  
-          </Wrapper>  
-      )
   }
 }
 
