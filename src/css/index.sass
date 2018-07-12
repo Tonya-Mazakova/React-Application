@@ -155,12 +155,13 @@ nav
     background: #f5f2c4
     height: 70px
 
-$side: 40px
-$l: 30px
+$side: 23px
+$l: 23px
 $num: 10
 $dur: 10s
 
 @mixin plane($w, $h)
+  position: relative
   width: $w
   height: $h
   transform-style: preserve-3d
@@ -169,7 +170,7 @@ $dur: 10s
   @include plane($side, $side)
   
   &.main
-    transform: rotateX(60deg) rotateZ(-30deg)
+    //transform: rotateX(60deg) rotateZ(-30deg)
     animation: rotate 20s infinite linear
       
     .circle
@@ -177,15 +178,35 @@ $dur: 10s
       height: $side
       position: absolute
       transform-style: preserve-3d
-      border-radius: 100%
+      //border-radius: 100%
       //border: 1px solid white
+      background-color: rgba(119, 242, 234, .05)
       box-sizing: border-box
-      box-shadow: 0 0 3px #19f6e8 , inset 0 0 3px #19f6e8
+      box-shadow: inset 0 0 2px #19f6e8, inset 0 0 2px #19f6e8
   
-      @for $i from 1 through 5
-        &:nth-child(#{$i})
-          transform: rotateZ($i / 5 * 360deg) rotateX(63.435deg)
-  
+      &:nth-child(1)
+          transform: translateZ(11px)
+
+      &:nth-child(2)
+          transform: translateZ(-11px) rotateY(180deg)         
+
+      &:nth-child(3)
+          transform: rotateY(-270deg) translateX(11px)
+          transform-origin: top right 
+
+      &:nth-child(4)
+          transform: rotateY(270deg) translateX(-11px)
+          transform-origin: center left
+
+      &:nth-child(5)
+           transform: rotateX(-270deg) translateY(-11px)
+           transform-origin: top center
+
+      &:nth-child(6)
+           transform: rotateX(270deg) translateY(11px)
+           transform-origin: bottom center
+
+
 @keyframes rotate
   0%
     transform: rotateX(0) rotateY(0) rotateZ(0)
