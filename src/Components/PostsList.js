@@ -5,7 +5,7 @@ import {Icon} from 'react-fa';
 import '../css/index.sass';
 import { LiPost, BPost, IconStyle, 
          WrapPost, WrapTitle, Loading, 
-         IconWrap, WrapAddPost, Wrapper} from './style/PostsList';
+         IconWrap, WrapAddPost, Wrapper, ReadMore} from './style/PostsList';
 import PostView from '../Components/PostView';
 import Popup from '../Components/Popup';
 import Pagination from '../Components/Pagination';
@@ -39,6 +39,7 @@ class PostsList extends PureComponent {
     this.togglePopup = this.togglePopup.bind(this); 
     this.closePopup = this.closePopup.bind(this);
     this.onChangePage = this.onChangePage.bind(this);
+    this.onHandleReadMore = this.onHandleReadMore.bind(this);
   }
 
   onChangePage(pageOfItems) {
@@ -47,10 +48,12 @@ class PostsList extends PureComponent {
 
   viewPost(id){
       this.setState({ viewPost: true, idView: id});
+      this.props.viewPost(true);
   }
 
   closeViewPost(){
       this.setState({ viewPost: false });
+      this.props.viewPost(false);
   }
 
   togglePopup(id, todo) {
@@ -134,6 +137,12 @@ class PostsList extends PureComponent {
     };  
   }
 
+  onHandleReadMore(e){
+    e.target.textContent = e.target.textContent === 'Read more...'? 'Hide': 'Read more...';
+    let el = e.target.previousSibling;
+    el.classList.toggle("post-all-text");
+  }
+
   render() {
     if (this.props.error) {
       return <div>Error! {this.state.error.message}</div>;
@@ -166,12 +175,13 @@ class PostsList extends PureComponent {
     }
     date = formatDate(post.date);
     return (
-        <LiPost key={post.id} className="card col-md-7 flex-md-row mb-4 h-md-250">   
+        <LiPost key={post.id} className="card col-md-5 flex-md-row mb-4 h-md-250">   
             <WrapPost className="card-body d-flex flex-column">
               <div>
                 <WrapTitle className="center"><h5 id={"Title" + post.id} className="title">{post.title}</h5></WrapTitle>
                 <div><Icon name='calendar'/><span className="indent">{date}</span></div>                
-                <BPost id={"Body" + post.id}>{post.body}</BPost>  
+                <BPost className="post-text" id={"Body" + post.id}>{post.body}</BPost>  
+                <ReadMore className="post-readMore" onClick={(e)=>{this.onHandleReadMore(e)}}>Read more...</ReadMore>
               </div> 
               <span>#{post.id}</span>
               <IconWrap className="d-flex">
@@ -209,7 +219,7 @@ if(this.props.posts && this.props.posts.length){
         <AddElement addElement={this.state.addElement}/>  
       </WrapAddPost>
       </Wrapper>
-      <ul>
+      <ul className="row mb-2">
         {renderPosts}
       </ul>
       <Pagination items={this.props.posts} dateFilter={this.props.dateFilter} onChangePage={this.onChangePage}/>

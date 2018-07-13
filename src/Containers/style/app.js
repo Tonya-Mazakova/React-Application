@@ -8,6 +8,7 @@ const Wrapper = styled.div`
 
 const TopMain = styled.section`
     height: 60px;
+    margin-top: 40px;
 `;
 
 

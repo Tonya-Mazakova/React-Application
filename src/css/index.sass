@@ -31,17 +31,13 @@ textarea
     border: none 
     padding: 5px
 
-.color-base
-    background: lightgoldenrodyellow
-
 .color-second
-    background: azure !important
+   // background: azure !important
 
 body
     height: 100%
     position: relative
     color: #6c757d
-    background: lightgoldenrodyellow
 
 .anim
     -webkit-transition: all .2s ease-in-out
@@ -63,6 +59,10 @@ body
 .btn-primary:hover
     border-color: #5bc9c2!important
       
+.btn-outline-secondary:hover 
+    color: #e3e5e5 !important
+    background-color: #1d2928
+    border-color: #6c757d
 
 .modal-header
     border-bottom: none
@@ -78,17 +78,94 @@ body
 .cursor-p        
     cursor: pointer
 
+.p-2
+    color:#e3e5e5
+
+.img-writter
+    width: 80px
+    height: 80px
+    
 /***header***/
 nav 
-    background: #f5f2c4
+    //background: #f5f2c4
+    //background: tomato
+    background: #1d2928
 
 .header-wrap
     border-bottom: 1px solid #e5e5e5
 
 .header-top
-    height: 70px
+    height: 90px
     justify-content: space-between
 
+/***post***/
+.post-text
+    height: 80px
+    overflow: hidden
+
+.post-all-text   
+    display: block 
+    height: auto
+    
+/***slider***/
+.ws_script
+    position: absolute
+    left: -99%
+
+.ws_bullets
+    display: none
+
+#wowslider-container1 .ws-title div
+    background: transparent
+
+#wowslider-container1 .ws-title
+    bottom: 0
+    left: 10px
+
+blockquote 
+    margin: 0
+    //background: #FFF4E0
+    background: white
+    color: #474C4F
+    padding: 30px
+    position: relative
+    text-align: center
+    text-transform: uppercase
+    font-family: 'Lato', sans-serif
+
+blockquote:before 
+    content: "\f10d"
+    font-family: FontAwesome
+    position: absolute
+    z-index: 2
+    left: 50%
+    transform: translateX(-50%)
+    top: 14px
+    color: #474C4F
+    font-size: 15px
+    //background: #FFF4E0
+    background: white
+    padding: 0 15px
+
+blockquote:after 
+    content: ""
+    position: absolute
+    left: 15px
+    top: 20px
+    right: 15px
+    height: 4px
+    border-top: 1px dotted #474C4F
+    border-bottom: 1px dotted #474C4F
+
+blockquote p 
+    font-size: 15px
+    letter-spacing: .05em
+    line-height: 1.4
+
+blockquote cite 
+    font-style: normal
+    font-weight: 300
+    
 /***pagination***/
 .activePage
     color: #19f6e8   
@@ -144,7 +221,7 @@ nav
   100%
     stroke-dasharray: 760
     stroke-dashoffset: 0
-    stroke-width: 2px    
+    stroke-width: 2px   
 
 .svg-wrapper:hover .shape 
   -webkit-animation: 0.5s draw linear forwards
@@ -152,7 +229,7 @@ nav
 
 /***footer***/
 .footer
-    background: #f5f2c4
+    //background: #f5f2c4
     height: 70px
 
 $side: 23px
@@ -213,4 +290,7 @@ $dur: 10s
   100%
     transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg)
     
-    
+
+/***slider***/
+.ws_next, .ws_prev, .ws_pause
+    display: none            

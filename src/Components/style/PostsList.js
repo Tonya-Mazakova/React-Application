@@ -3,10 +3,11 @@ import styled from 'styled-components';
 
 
 const LiPost = styled.li`
+    //height: 230px;
+    overflow: hidden;
     display:flex;
     flex-direction:column;
     justify-content:space-between;
-    background-color:azure;
     margin: 0 auto 10px;
     padding: 0;
     box-shadow:0 0.25rem 0.75rem rgba(0, 0, 0, .05);
@@ -27,8 +28,6 @@ const IconStyle = styled.span`
         border-right:none;
     }
     &:hover&{
-        //color:#007bff;
-        //color: #05F2AE;
         color: #19f6e8;
     }
 `;
@@ -60,6 +59,17 @@ const Wrapper = styled.div`
     justify-content: flex-end;
 `;
 
+const ReadMore = styled.span`
+    width: 140px;
+    display: block;
+    font-size: 15px;
+    cursor: pointer;
+    border: 1px solid white;
+    padding: 4px;
+    margin: 0 auto;
+    text-align: center;
+    border-radius: 7px;
+`;
 
 
 export{
@@ -71,5 +81,6 @@ export{
     Loading,
     IconWrap,
     WrapAddPost,
-    Wrapper
+    Wrapper,
+    ReadMore
 }
