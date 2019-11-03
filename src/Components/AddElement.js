@@ -8,6 +8,7 @@ import { Wrap, IconWrap, IconStyle } from './style/AddElement';
 class AddElement extends PureComponent{
     render(){
         console.log('Test111111');
+        console.log("Test222222");
         return (
             <Wrap className="center">
                 <IconStyle className='anim'>
